@@ -1,0 +1,1 @@
+{"Target":{"Guid":"c2ec0b25-0455-488e-aa71-739bc77bc411","Ancestry":[{"IsSelected":true,"Selector":"<wnd app=\"acrobat.exe\" cls=\"AVL_AVPopupShadow\" idx=\"*\"/>","ValidAttributes":{"app":"acrobat.exe","cls":"AVL_AVPopupShadow","aastate":"invisible, focusable"}},{"IsSelected":true,"Selector":"<wnd cls=\"Edit\"/>","ValidAttributes":{"cls":"Edit","aastate":"invisible"}}]}}
