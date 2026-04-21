@@ -67,9 +67,9 @@
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.extensions.objectpool\\5.0.17\\lib/net5.0/Microsoft.Extensions.ObjectPool.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\lib/netstandard2.1/Microsoft.Extensions.Options.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\lib/net6.0/Microsoft.Extensions.Primitives.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.70.0\\lib/net8.0/Microsoft.Identity.Client.dll",
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.35.1\\lib/netcoreapp2.1/Microsoft.Identity.Client.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client.extensions.msal\\2.16.5\\lib/netcoreapp2.1/Microsoft.Identity.Client.Extensions.Msal.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0\\lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.logging\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.Logging.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.12.2\\lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll",
@@ -664,8 +664,8 @@
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\6.0.0\\lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.graph\\4.11.0\\lib/netstandard2.0/Microsoft.Graph.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.graph.core\\2.0.5\\lib/netstandard2.0/Microsoft.Graph.Core.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.70.0\\lib/net8.0/Microsoft.Identity.Client.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0\\lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.35.1\\lib/netcoreapp2.1/Microsoft.Identity.Client.dll",
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.logging\\6.34.0\\lib/net6.0/Microsoft.IdentityModel.Logging.dll",
         "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.12.2\\lib/netstandard2.0/Microsoft.IdentityModel.Protocols.dll",
@@ -970,24 +970,6 @@
         "C:\\Users\\kl000096\\.nuget\\packages\\uipath.webapi.activities.runtime\\1.21.1\\lib/net6.0-windows7.0/UiPath.Web.dll"
       ],
       "Path": "C:\\Users\\kl000096\\.nuget\\packages\\uipath.webapi.activities\\1.21.1"
-    },
-    {
-      "Package": {
-        "Id": "UiPathTeam.SharePoint.Activities",
-        "Version": "2.0.3"
-      },
-      "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.aspnet.webapi.client\\6.0.0\\lib/netstandard2.0/System.Net.Http.Formatting.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.70.0\\lib/net8.0/Microsoft.Identity.Client.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0\\lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json\\13.0.3\\lib/net6.0/Newtonsoft.Json.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\lib/netstandard2.0/Newtonsoft.Json.Bson.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib/net6.0-windows7.0/UiPathTeam.SharePoint.Activities.Design.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib/net6.0-windows7.0/UiPathTeam.SharePoint.Activities.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib/net6.0-windows7.0/UiPathTeam.SharePoint.RestAPI.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib/net6.0-windows7.0/UiPathTeam.SharePoint.dll"
-      ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3"
     },
     {
       "Package": {
@@ -1466,28 +1448,6 @@
         {
           "Item1": "Newtonsoft.Json",
           "Item2": "[11.0.2, )"
-        }
-      ]
-    },
-    "Microsoft.AspNet.WebApi.Client": {
-      "Id": "Microsoft.AspNet.WebApi.Client",
-      "Version": "6.0.0",
-      "Dependencies": [
-        {
-          "Item1": "Newtonsoft.Json.Bson",
-          "Item2": "[1.0.2, )"
-        },
-        {
-          "Item1": "Newtonsoft.Json",
-          "Item2": "[13.0.1, )"
-        },
-        {
-          "Item1": "System.Memory",
-          "Item2": "[4.5.5, )"
-        },
-        {
-          "Item1": "System.Threading.Tasks.Extensions",
-          "Item2": "[4.5.4, )"
         }
       ]
     },
@@ -1973,17 +1933,8 @@
     },
     "Microsoft.Identity.Client": {
       "Id": "Microsoft.Identity.Client",
-      "Version": "4.70.0",
-      "Dependencies": [
-        {
-          "Item1": "Microsoft.IdentityModel.Abstractions",
-          "Item2": "[6.35.0, )"
-        },
-        {
-          "Item1": "System.Diagnostics.DiagnosticSource",
-          "Item2": "[6.0.1, )"
-        }
-      ]
+      "Version": "4.35.1",
+      "Dependencies": []
     },
     "Microsoft.Identity.Client.Extensions.Msal": {
       "Id": "Microsoft.Identity.Client.Extensions.Msal",
@@ -2001,7 +1952,7 @@
     },
     "Microsoft.IdentityModel.Abstractions": {
       "Id": "Microsoft.IdentityModel.Abstractions",
-      "Version": "6.35.0",
+      "Version": "6.34.0",
       "Dependencies": []
     },
     "Microsoft.IdentityModel.JsonWebTokens": {
@@ -2825,16 +2776,6 @@
       "Version": "13.0.3",
       "Dependencies": []
     },
-    "Newtonsoft.Json.Bson": {
-      "Id": "Newtonsoft.Json.Bson",
-      "Version": "1.0.2",
-      "Dependencies": [
-        {
-          "Item1": "Newtonsoft.Json",
-          "Item2": "[12.0.1, )"
-        }
-      ]
-    },
     "Nito.AsyncEx": {
       "Id": "Nito.AsyncEx",
       "Version": "5.1.2",
@@ -3514,7 +3455,7 @@
     },
     "System.Diagnostics.DiagnosticSource": {
       "Id": "System.Diagnostics.DiagnosticSource",
-      "Version": "6.0.1",
+      "Version": "6.0.0",
       "Dependencies": [
         {
           "Item1": "System.Runtime.CompilerServices.Unsafe",
@@ -4150,7 +4091,7 @@
     },
     "System.Memory": {
       "Id": "System.Memory",
-      "Version": "4.5.5",
+      "Version": "4.5.4",
       "Dependencies": []
     },
     "System.Memory.Data": {
@@ -6860,24 +6801,6 @@
         }
       ]
     },
-    "UiPathTeam.SharePoint.Activities": {
-      "Id": "UiPathTeam.SharePoint.Activities",
-      "Version": "2.0.3",
-      "Dependencies": [
-        {
-          "Item1": "Microsoft.AspNet.WebApi.Client",
-          "Item2": "[6.0.0, )"
-        },
-        {
-          "Item1": "Microsoft.Identity.Client",
-          "Item2": "[4.70.0, )"
-        },
-        {
-          "Item1": "Newtonsoft.Json",
-          "Item2": "[13.0.3, )"
-        }
-      ]
-    },
     "WordsToNumbers": {
       "Id": "WordsToNumbers",
       "Version": "1.1.0",
@@ -7241,16 +7164,6 @@
     },
     {
       "Package": {
-        "Id": "Microsoft.AspNet.WebApi.Client",
-        "Version": "6.0.0"
-      },
-      "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.aspnet.webapi.client\\6.0.0\\lib\\netstandard2.0\\System.Net.Http.Formatting.dll"
-      ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.aspnet.webapi.client\\6.0.0"
-    },
-    {
-      "Package": {
         "Id": "Microsoft.AspNetCore.Connections.Abstractions",
         "Version": "3.1.6"
       },
@@ -7568,12 +7481,12 @@
     {
       "Package": {
         "Id": "Microsoft.Identity.Client",
-        "Version": "4.70.0"
+        "Version": "4.35.1"
       },
       "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.70.0\\lib\\net8.0\\Microsoft.Identity.Client.dll"
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.35.1\\lib\\netcoreapp2.1\\Microsoft.Identity.Client.dll"
       ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.70.0"
+      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identity.client\\4.35.1"
     },
     {
       "Package": {
@@ -7588,12 +7501,12 @@
     {
       "Package": {
         "Id": "Microsoft.IdentityModel.Abstractions",
-        "Version": "6.35.0"
+        "Version": "6.34.0"
       },
       "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0\\lib\\net6.0\\Microsoft.IdentityModel.Abstractions.dll"
+        "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.34.0\\lib\\net6.0\\Microsoft.IdentityModel.Abstractions.dll"
       ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.35.0"
+      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.34.0"
     },
     {
       "Package": {
@@ -7973,16 +7886,6 @@
         "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json\\13.0.3\\lib\\net6.0\\Newtonsoft.Json.dll"
       ],
       "Path": "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json\\13.0.3"
-    },
-    {
-      "Package": {
-        "Id": "Newtonsoft.Json.Bson",
-        "Version": "1.0.2"
-      },
-      "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\lib\\netstandard2.0\\Newtonsoft.Json.Bson.dll"
-      ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2"
     },
     {
       "Package": {
@@ -8826,12 +8729,12 @@
     {
       "Package": {
         "Id": "System.Diagnostics.DiagnosticSource",
-        "Version": "6.0.1"
+        "Version": "6.0.0"
       },
       "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\lib\\net6.0\\System.Diagnostics.DiagnosticSource.dll"
+        "C:\\Users\\kl000096\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\lib\\net6.0\\System.Diagnostics.DiagnosticSource.dll"
       ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1"
+      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0"
     },
     {
       "Package": {
@@ -9125,12 +9028,12 @@
     {
       "Package": {
         "Id": "System.Memory",
-        "Version": "4.5.5"
+        "Version": "4.5.4"
       },
       "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\system.memory\\4.5.5\\lib\\netcoreapp2.1\\_._"
+        "C:\\Users\\kl000096\\.nuget\\packages\\system.memory\\4.5.4\\lib\\netcoreapp2.1\\_._"
       ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\system.memory\\4.5.5"
+      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\system.memory\\4.5.4"
     },
     {
       "Package": {
@@ -10382,19 +10285,6 @@
         "C:\\Users\\kl000096\\.nuget\\packages\\uipath.wordstonumbers\\1.0.0\\lib\\netstandard2.0\\Numsense.dll"
       ],
       "Path": "C:\\Users\\kl000096\\.nuget\\packages\\uipath.wordstonumbers\\1.0.0"
-    },
-    {
-      "Package": {
-        "Id": "UiPathTeam.SharePoint.Activities",
-        "Version": "2.0.3"
-      },
-      "Assemblies": [
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib\\net6.0-windows7.0\\UiPathTeam.SharePoint.Activities.Design.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib\\net6.0-windows7.0\\UiPathTeam.SharePoint.Activities.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib\\net6.0-windows7.0\\UiPathTeam.SharePoint.RestAPI.dll",
-        "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3\\lib\\net6.0-windows7.0\\UiPathTeam.SharePoint.dll"
-      ],
-      "Path": "C:\\Users\\kl000096\\.nuget\\packages\\uipathteam.sharepoint.activities\\2.0.3"
     },
     {
       "Package": {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AZSiBXN99B1sGzed0OUkoHFll4BC+Y7dcQU2dBiMvdj167CW1NdVGYIhti+Kw2oIyniSD/FVm0WObX1gPmKPAg==",
+  "dgSpecHash": "EpPRtRbqiq3t2Y5O44PCs2dBbuvcVMc1/HrNiwdvNt+h9Fwait/R4cnnOY1LAzv2SjQrU99tGADgVtCbsAgwAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service-Blanco\\.local\\",
+  "projectFilePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\kl000096\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\avalonedit\\6.1.3.50\\avalonedit.6.1.3.50.nupkg.sha512",
@@ -15,6 +15,7 @@
     "C:\\Users\\kl000096\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.credentials.64\\1.0.2\\dracoe.credentials.64.1.0.2.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.logging.64\\1.0.9\\dracoe.logging.64.1.0.9.nupkg.sha512",
+    "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.microsoft.graph.64\\1.0.51\\dracoe.microsoft.graph.64.1.0.51.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.popups.64\\1.0.9\\dracoe.popups.64.1.0.9.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\google.apis\\1.55.0\\google.apis.1.55.0.nupkg.sha512",
@@ -323,7 +324,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service-Blanco\\.local",
+      "filePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local",
       "message": "Detected package version outside of dependency constraint: DRACOE.Logging.64 1.0.9 requires UiPath.Excel.Activities (= 2.22.3) but version UiPath.Excel.Activities 2.24.4 was resolved.",
       "libraryId": "UiPath.Excel.Activities",
       "targetGraphs": [
@@ -335,7 +336,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service-Blanco\\.local",
+      "filePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local",
       "message": "Detected package version outside of dependency constraint: DRACOE.Logging.64 1.0.9 requires UiPath.System.Activities (= 23.10.6) but version UiPath.System.Activities 24.10.4 was resolved.",
       "libraryId": "UiPath.System.Activities",
       "targetGraphs": [

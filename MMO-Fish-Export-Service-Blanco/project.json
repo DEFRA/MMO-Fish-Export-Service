@@ -5,6 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "DRACOE.Logging.64": "[1.0.9]",
+    "DRACOE.Microsoft.Graph.64": "[1.0.51]",
     "DRACOE.PopUps.64": "[1.0.9]",
     "UiPath.Excel.Activities": "[2.24.4]",
     "UiPath.Mail.Activities": "[1.23.11]",

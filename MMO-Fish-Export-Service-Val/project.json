@@ -15,7 +15,6 @@
     "UiPath.Testing.Activities": "[23.10.1]",
     "UiPath.UIAutomation.Activities": "[25.10.29]",
     "UiPath.WebAPI.Activities": "[1.21.1]",
-    "UiPathTeam.SharePoint.Activities": "[2.0.3]",
     "WordsToNumbers": "[1.1.0]"
   },
   "webServices": [],
