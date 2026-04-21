@@ -552,7 +552,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap:VirtualizedContainerService.HintSize="638,2490.4" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                <Sequence sap:VirtualizedContainerService.HintSize="604,2490.4" sap2010:WorkflowViewState.IdRef="Sequence_46">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
                     <Variable x:TypeArguments="x:String" Name="SiteID" />
@@ -623,77 +623,94 @@
                   </ui:ForEachRow>
                   <ds:Download_File DisplayName="Download File - Certificate" sap:VirtualizedContainerService.HintSize="570,324" sap2010:WorkflowViewState.IdRef="Download_File_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSaveToFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString]" in_strSiteID="[SiteID]" />
                 </Sequence>
-                <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="638,1255.6" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="Removed_Key" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[g_Config(&quot;Sharepoint - URL&quot;).ToString]" UserName="Removed_Key">
-                  <usa:SharepointApplicationScope.Body>
-                    <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,1088.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[arrChildren]" ChooseFile="False" DisplayName="Get children names - Catch Certs Folder" sap:VirtualizedContainerService.HintSize="570,103.2" sap2010:WorkflowViewState.IdRef="GetChildrenNames_1" RelativeUrl="[g_config(&quot;Sharepoint - Folder&quot;).ToString]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
-                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Child:" sap:VirtualizedContainerService.HintSize="570,796.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrChildren]">
-                          <ui:ForEach.Body>
-                            <ActivityAction x:TypeArguments="x:String">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="x:String" Name="child" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,649.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[child.tostring.contains(&quot;CatchCertificate&quot;)]" DisplayName="If child contains (&quot;Catch Certicficate&quot;)" sap:VirtualizedContainerService.HintSize="502,589.6" sap2010:WorkflowViewState.IdRef="If_4">
-                                  <If.Then>
-                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,336.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="604,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="672,1314" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="638,1254" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="Removed_Key" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[g_Config(&quot;Sharepoint - URL&quot;).ToString]" UserName="Removed_Key">
+                        <usa:SharepointApplicationScope.Body>
+                          <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,1087.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <usal:GetChildrenNames AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" ChildrenNames="[arrChildren]" ChooseFile="False" DisplayName="Get children names - Catch Certs Folder" sap:VirtualizedContainerService.HintSize="570,102" sap2010:WorkflowViewState.IdRef="GetChildrenNames_1" RelativeUrl="[g_config(&quot;Sharepoint - Folder&quot;).ToString]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Child:" sap:VirtualizedContainerService.HintSize="570,796.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrChildren]">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="x:String">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="x:String" Name="child" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,649.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Assign DisplayName="Assign Certificate File Name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_12">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[strCertificate]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[child.tostring]</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                      <Assign DisplayName="Assign Document Number" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_13">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[strDocumentNumber]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[strCertificate.replace("CatchCertificate-","")]</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                      <ui:Break sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                      <If Condition="[child.tostring.contains(&quot;CatchCertificate&quot;)]" DisplayName="If child contains (&quot;Catch Certicficate&quot;)" sap:VirtualizedContainerService.HintSize="502,589.6" sap2010:WorkflowViewState.IdRef="If_4">
+                                        <If.Then>
+                                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,336.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Assign DisplayName="Assign Certificate File Name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:String">[strCertificate]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:String">[child.tostring]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <Assign DisplayName="Assign Document Number" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:String">[strDocumentNumber]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:String">[strCertificate.replace("CatchCertificate-","")]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                            <ui:Break sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                          </Sequence>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Sequence>
+                                        </If.Else>
+                                      </If>
                                     </Sequence>
-                                  </If.Then>
-                                  <If.Else>
-                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </Sequence>
-                                  </If.Else>
-                                </If>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:ForEach.Body>
-                        </ui:ForEach>
-                        <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file - Certificate" sap:VirtualizedContainerService.HintSize="570,128.8" sap2010:WorkflowViewState.IdRef="GetFile_2" LocalPath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[&quot;Projects/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificate.replace(&quot; &quot;,&quot;%20&quot;)]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
-                      </Sequence>
-                    </ActivityAction>
-                  </usa:SharepointApplicationScope.Body>
-                </usa:SharepointApplicationScope>
+                                  </ActivityAction>
+                                </ui:ForEach.Body>
+                              </ui:ForEach>
+                              <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file - Certificate" sap:VirtualizedContainerService.HintSize="570,128.8" sap2010:WorkflowViewState.IdRef="GetFile_2" LocalPath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[&quot;Projects/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificate.replace(&quot; &quot;,&quot;%20&quot;)]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                            </Sequence>
+                          </ActivityAction>
+                        </usa:SharepointApplicationScope.Body>
+                      </usa:SharepointApplicationScope>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
               </Sequence>
               <FlowStep.Next>
                 <FlowStep x:Name="__ReferenceID3">
@@ -855,7 +872,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">300,535 300,580</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="484,2067.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="484,1788.4" sap2010:WorkflowViewState.IdRef="Sequence_26">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -879,23 +896,40 @@
                           <ds:Upload_Small_File DisplayName="Upload Small File" sap:VirtualizedContainerService.HintSize="416,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/Allocated/&quot;+strCertificate]" in_LocalFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
                           <ds:Delete_File_or_Folder DisplayName="Delete File or Folder" sap:VirtualizedContainerService.HintSize="416,271.6" sap2010:WorkflowViewState.IdRef="Delete_File_or_Folder_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
                         </Sequence>
-                        <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="450,364.4" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" Password="Removed_Key" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[g_Config(&quot;Sharepoint - URL&quot;).ToString]" UserName="Removed_Key">
-                          <usa:SharepointApplicationScope.Body>
-                            <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,188.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <usal:MoveItem AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" AllowOverwrite="True" ChooseFile="False" DestinationRelativeUrl="[g_Config(&quot;Sharepoint - Folder&quot;).tostring+&quot;\&quot;+&quot;Allocated&quot;]" DisplayName="Move Certificate to Allocated" sap:VirtualizedContainerService.HintSize="382,128.8" sap2010:WorkflowViewState.IdRef="MoveItem_1" RelativeUrl="[g_Config(&quot;Sharepoint - Folder&quot;).tostring+&quot;\&quot;+strCertificate]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="True" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
-                              </Sequence>
-                            </ActivityAction>
-                          </usa:SharepointApplicationScope.Body>
-                        </usa:SharepointApplicationScope>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,85.2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,412.8" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="450,352.8" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" Password="Removed_Key" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[g_Config(&quot;Sharepoint - URL&quot;).ToString]" UserName="Removed_Key">
+                                <usa:SharepointApplicationScope.Body>
+                                  <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,186.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <usal:MoveItem AttachmentsAction="{x:Null}" LocalPathHintText="{x:Null}" RelativeUrlHintText="{x:Null}" AllowOverwrite="True" ChooseFile="False" DestinationRelativeUrl="[g_Config(&quot;Sharepoint - Folder&quot;).tostring+&quot;\&quot;+&quot;Allocated&quot;]" DisplayName="Move Certificate to Allocated" sap:VirtualizedContainerService.HintSize="382,126.4" sap2010:WorkflowViewState.IdRef="MoveItem_1" RelativeUrl="[g_Config(&quot;Sharepoint - Folder&quot;).tostring+&quot;\&quot;+strCertificate]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="False" ShowMove="True" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    </Sequence>
+                                  </ActivityAction>
+                                </usa:SharepointApplicationScope.Body>
+                              </usa:SharepointApplicationScope>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
                         <Assign DisplayName="Add 1 to CertificateCounter" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Int32">[intCertificateCounter]</OutArgument>
