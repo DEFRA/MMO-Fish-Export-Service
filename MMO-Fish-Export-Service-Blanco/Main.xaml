@@ -161,7 +161,7 @@
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID5}" DisplayName="Automation Template" sap:VirtualizedContainerService.HintSize="1284,778.84" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID5}" DisplayName="Automation Template" sap:VirtualizedContainerService.HintSize="1082.8,804.84" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -822,7 +822,7 @@
                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="&quot;Cred - Exchange&quot;" CacheStrategy="None" DisplayName="Get Credential - Exchange" FolderPath="&quot;MMO Root/Fish Export Service/Blanco - Robot 1&quot;" sap:VirtualizedContainerService.HintSize="672,176.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[g_CredExchangePassword]" Username="[g_CredExchangeUsername]" />
+                                            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Cred - Exchange" CacheStrategy="None" DisplayName="Get Credential - Exchange" FolderPath="MMO Root/Fish Export Service/Blanco - Robot 1" sap:VirtualizedContainerService.HintSize="672,176.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[g_CredExchangePassword]" Username="[g_CredExchangeUsername]" />
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="672,208" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
                                                 <InArgument x:TypeArguments="x:String" x:Key="in_OrchestratorFolders">MMO Root/Fish Export Service/Blanco - Robot 1</InArgument>
