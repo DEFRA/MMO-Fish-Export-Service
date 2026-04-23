@@ -151,7 +151,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1266.8,2804.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1266.8,2978.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listMailMessages" />
     </Sequence.Variables>
@@ -161,10 +161,11 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Species File" sap:VirtualizedContainerService.HintSize="604,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Retrieving Transaction Data...&quot;]" />
     <ui:GetOutlookMailMessages Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="[g_Config(&quot;Outlook - Account&quot;).ToString]" DisplayName="Get &quot;To Process&quot; Email" GetAttachements="False" sap:VirtualizedContainerService.HintSize="604,56.8" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[g_Config(&quot;Outlook - To Process&quot;).ToString]" MarkAsRead="False" Messages="[listMailMessages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Top="2" />
-    <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="604,2646.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="604,2645.2" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="570,2318.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="570,2317.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="snm:MailMessage" Name="mailCurrentMessage" />
             <Variable x:TypeArguments="snm:MailMessage" Name="mailInProgressMessage" />
@@ -175,9 +176,9 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[listMailMessages.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="536,380" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[listMailMessages.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="536,378.4" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                 </Assign.To>
@@ -187,7 +188,7 @@
               </Assign>
             </If.Then>
             <If.Else>
-              <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                 </Assign.To>
