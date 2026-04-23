@@ -60,6 +60,7 @@
       <x:String>DRACOE_Microsoft_Graph_64.SharePoint</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Text</x:String>
+      <x:String>UiPath.Shared.Telemetry</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -159,7 +160,7 @@
       <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1284,778.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1082.8,804.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="booValidRequest" />
       <Variable x:TypeArguments="x:String" Name="strCertificate" />
@@ -873,31 +874,75 @@
                           <av:PointCollection x:Key="ConnectorLocation">300,535 300,580</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="484,1760" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="519.6,2290.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="ResponseContent" />
+                          <Variable x:TypeArguments="x:Int32" Name="ResponseStatus" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence sap:VirtualizedContainerService.HintSize="450,1537.6" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                        <Sequence sap:VirtualizedContainerService.HintSize="485.6,2040" sap2010:WorkflowViewState.IdRef="Sequence_50">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
                             <Variable x:TypeArguments="x:String" Name="SiteID" />
                             <Variable x:TypeArguments="x:String" Name="ListID" />
                             <Variable x:TypeArguments="sd:DataTable" Name="dtResponse" />
+                            <Variable x:TypeArguments="x:String" Name="strCertificateEncoded" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="416,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_2" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]" />
-                          <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="416,280.4" sap2010:WorkflowViewState.IdRef="Get_Site_ID_3" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]" />
-                          <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="416,280.4" sap2010:WorkflowViewState.IdRef="Get_List_ID_2" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]" />
-                          <ds:Upload_Small_File DisplayName="Upload Small File" sap:VirtualizedContainerService.HintSize="416,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/Allocated/&quot;+strCertificate]" in_LocalFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
-                          <ds:Delete_File_or_Folder DisplayName="Delete File or Folder" sap:VirtualizedContainerService.HintSize="416,271.6" sap2010:WorkflowViewState.IdRef="Delete_File_or_Folder_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
+                          <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="451.6,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_2" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]" />
+                          <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="451.6,280.4" sap2010:WorkflowViewState.IdRef="Get_Site_ID_3" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]" />
+                          <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="451.6,280.4" sap2010:WorkflowViewState.IdRef="Get_List_ID_2" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]" />
+                          <ds:Upload_Small_File DisplayName="Upload Small File" sap:VirtualizedContainerService.HintSize="451.6,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/Allocated/&quot;+strCertificate]" in_LocalFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
+                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="451.6,123.2" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;https://graph.microsoft.com/v1.0/sites/&quot; &amp; SiteID &amp; &quot;/drive/root:/FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" />
+                          <Assign sap:VirtualizedContainerService.HintSize="451.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_37">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[strCertificateEncoded]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[System.Uri.EscapeDataString(strCertificate)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&#xD;&#xA;  &quot;&quot;parentReference&quot;&quot;: {&#xD;&#xA;    &quot;&quot;path&quot;&quot;: &quot;&quot;/drive/root:/FES/BCP/Blank Documents/Catch Certificates/Robot/Delete&quot;&quot;&#xD;&#xA;  }&#xD;&#xA;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/sites/&quot; &amp; SiteID &amp; &quot;/drive/root:/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificateEncoded+&quot;:&quot;]" sap:VirtualizedContainerService.HintSize="451.6,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="PATCH" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
+                            <ui:HttpClient.Attachments>
+                              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                            </ui:HttpClient.Attachments>
+                            <ui:HttpClient.Cookies>
+                              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                            </ui:HttpClient.Cookies>
+                            <ui:HttpClient.Headers>
+                              <InArgument x:TypeArguments="x:String" x:Key="Authorization">
+                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Bearer &quot; &amp; (New System.Net.NetworkCredential(&quot;&quot;, BearerToken)).Password" />
+                              </InArgument>
+                            </ui:HttpClient.Headers>
+                            <ui:HttpClient.Parameters>
+                              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                            </ui:HttpClient.Parameters>
+                            <ui:HttpClient.UrlSegments>
+                              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                            </ui:HttpClient.UrlSegments>
+                          </ui:HttpClient>
+                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="451.6,433.2" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                            <ui:CommentOut.Body>
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,331.6" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ds:Delete_File_or_Folder DisplayName="Delete File or Folder" sap:VirtualizedContainerService.HintSize="382,271.6" sap2010:WorkflowViewState.IdRef="Delete_File_or_Folder_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
+                              </Sequence>
+                            </ui:CommentOut.Body>
+                          </ui:CommentOut>
                         </Sequence>
-                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="485.6,85.2" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                           <ui:CommentOut.Body>
                             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,412.8" sap2010:WorkflowViewState.IdRef="Sequence_52">
                               <sap:WorkflowViewStateService.ViewState>
@@ -931,7 +976,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:CommentOut>
-                        <Assign DisplayName="Add 1 to CertificateCounter" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <Assign DisplayName="Add 1 to CertificateCounter" sap:VirtualizedContainerService.HintSize="485.6,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Int32">[intCertificateCounter]</OutArgument>
                           </Assign.To>
