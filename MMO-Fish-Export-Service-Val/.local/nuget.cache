@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "n/ubVhk9tQ2Vtk30YO83fEc0B3X10cKJxrLWxcwOmUWfsQzADfcDH3BgQTI7DQghcIi5vkG9ZiCaY9HLxvGOCA==",
+  "dgSpecHash": "+ZeUaBMye0wTkkFUKOHOk21oHJBNPBIqcCpH6K6DJaZqxWpeERnZIFEIYhO0ApfKx0TNZ0c2KCymyJrLvoG5fw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local\\",
   "expectedPackageFiles": [
@@ -17,7 +17,7 @@
     "C:\\Users\\kl000096\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.credentials.64\\1.0.2\\dracoe.credentials.64.1.0.2.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.logging.64\\1.0.9\\dracoe.logging.64.1.0.9.nupkg.sha512",
-    "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.microsoft.graph.64\\1.0.52\\dracoe.microsoft.graph.64.1.0.52.nupkg.sha512",
+    "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.microsoft.graph.64\\1.0.53\\dracoe.microsoft.graph.64.1.0.53.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\dracoe.popups.64\\1.0.9\\dracoe.popups.64.1.0.9.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\kl000096\\.nuget\\packages\\fsharp.core\\4.7.1\\fsharp.core.4.7.1.nupkg.sha512",

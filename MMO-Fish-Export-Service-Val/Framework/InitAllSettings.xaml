@@ -114,7 +114,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow retrieves all the assets from each folder listed in the in_OrchestratorFolders array. Credentials can also be retrieved if desired" DisplayName="InitAllSettingsAPI" sap:VirtualizedContainerService.HintSize="1556.8,2659.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow retrieves all the assets from each folder listed in the in_OrchestratorFolders array. Credentials can also be retrieved if desired" DisplayName="InitAllSettingsAPI" sap:VirtualizedContainerService.HintSize="1486.8,2450.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strJson" />
       <Variable x:TypeArguments="x:Int32" Name="intStatusCode" />
@@ -128,7 +128,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Initialise Dictionaries" sap:VirtualizedContainerService.HintSize="1494.8,148.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Initialise Dictionaries" sap:VirtualizedContainerService.HintSize="1486.8,180.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -150,13 +150,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Orchestrator Folder" sap:VirtualizedContainerService.HintSize="1494.8,2328.4" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_OrchestratorFolders.Split(&quot;,&quot;c)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Orchestrator Folder" sap:VirtualizedContainerService.HintSize="1486.8,2215.2" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_OrchestratorFolders.Split(&quot;,&quot;c)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="folder" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="Read settings and constants from the configuration file and add them to the Config dictionary." DisplayName="Get local settings and constants" sap:VirtualizedContainerService.HintSize="1460.8,2191.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence sap2010:Annotation.AnnotationText="Read settings and constants from the configuration file and add them to the Config dictionary." DisplayName="Get local settings and constants" sap:VirtualizedContainerService.HintSize="1452.8,2076.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <Sequence.Variables>
               <Variable x:TypeArguments="njl:JArray" Name="arrJson" />
             </Sequence.Variables>
@@ -167,7 +167,7 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Trim folder name" sap:VirtualizedContainerService.HintSize="1418.8,82.4" sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign DisplayName="Trim folder name" sap:VirtualizedContainerService.HintSize="1418.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[folder]</OutArgument>
               </Assign.To>
@@ -175,16 +175,16 @@
                 <InArgument x:TypeArguments="x:String">[folder.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1418.8,143.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Retrieving assets from: &quot;+folder]" />
-            <ui:OrchestratorHttpRequest JSONPayload="{x:Null}" ResponseHeaders="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="/swagger/index.html#/Assets/Assets_GetFiltered" DisplayName="Orchestrator HTTP Request" FolderPath="[folder]" sap:VirtualizedContainerService.HintSize="1418.8,278.4" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_1" Method="GET" RelativeEndpoint="/odata/Assets/UiPath.Server.Configuration.OData.GetFiltered" Result="[strJson]" StatusCode="[intStatusCode]">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1418.8,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Retrieving assets from: &quot;+folder]" />
+            <ui:OrchestratorHttpRequest JSONPayload="{x:Null}" ResponseHeaders="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="/swagger/index.html#/Assets/Assets_GetFiltered" DisplayName="Orchestrator HTTP Request" FolderPath="[folder]" sap:VirtualizedContainerService.HintSize="1418.8,310.4" sap2010:WorkflowViewState.IdRef="OrchestratorHttpRequest_1" Method="GET" RelativeEndpoint="/odata/Assets/UiPath.Server.Configuration.OData.GetFiltered" Result="[strJson]" StatusCode="[intStatusCode]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:OrchestratorHttpRequest>
-            <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON Response" sap:VirtualizedContainerService.HintSize="1418.8,91.2" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[objJson]" JsonString="[strJson]" />
-            <If Condition="[intStatusCode &lt;&gt; 200]" DisplayName="If the API call failed" sap:VirtualizedContainerService.HintSize="1418.8,53.2" sap2010:WorkflowViewState.IdRef="If_6">
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON Response" sap:VirtualizedContainerService.HintSize="1418.8,123.2" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[objJson]" JsonString="[strJson]" />
+            <If Condition="[intStatusCode &lt;&gt; 200]" DisplayName="If the API call failed" sap:VirtualizedContainerService.HintSize="502,738.8" sap2010:WorkflowViewState.IdRef="If_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -192,13 +192,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="476,530.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="468,509.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap2010:Annotation.AnnotationText="The error code logged here is not the HTTP status code, (e.g. 200 or 400) but rather the &quot;errorCode&quot; property of the JSON response" sap:VirtualizedContainerService.HintSize="434,127.2" sap2010:WorkflowViewState.IdRef="Assign_25">
+                  <Assign sap2010:Annotation.AnnotationText="The error code logged here is not the HTTP status code, (e.g. 200 or 400) but rather the &quot;errorCode&quot; property of the JSON response" sap:VirtualizedContainerService.HintSize="434,159.2" sap2010:WorkflowViewState.IdRef="Assign_25">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strError]</OutArgument>
                     </Assign.To>
@@ -211,15 +211,21 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,143.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[strError]" />
-                  <Throw Exception="[New SystemException(strError)]" sap:VirtualizedContainerService.HintSize="434,91.2" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[strError]" />
+                  <Throw Exception="[New SystemException(strError)]" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14" />
+                <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
               </If.Else>
             </If>
-            <ui:DeserializeJsonArray sap2010:Annotation.AnnotationText="The &quot;value&quot; propery of the JSON response is an array of assets, so get these assets as a JArray" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="1418.8,104.8" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonArray="[arrJson]" JsonString="[objJson(&quot;value&quot;).ToString]">
+            <ui:DeserializeJsonArray sap2010:Annotation.AnnotationText="The &quot;value&quot; propery of the JSON response is an array of assets, so get these assets as a JArray" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="1418.8,136.8" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonArray="[arrJson]" JsonString="[objJson(&quot;value&quot;).ToString]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
