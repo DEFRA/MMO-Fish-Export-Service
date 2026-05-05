@@ -742,7 +742,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:BuildDataTable DataTable="[datUpdate]" DisplayName="Build Data Table - Update Info" sap:VirtualizedContainerService.HintSize="714,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Document_x0020_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Advisor_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Email&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{strDocumentNumber,&quot;Blanko&quot;,&quot;&quot;,system.text.RegularExpressions.Regex.Matches(g_TransactionItem(&quot;BodyPreview&quot;).ToString,&quot;(?&lt;=Email:).*(?=\n)&quot;)(0).ToString.Trim}]" DataTable="[datUpdate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="714,222" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                    <If Condition="[Cbool(g_Config(&quot;Pausepoint 1&quot;))=TRUE]" DisplayName="If Pausepoint 1 is Enabled" sap:VirtualizedContainerService.HintSize="714,3014.4" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If Condition="[Cbool(g_Config(&quot;Pausepoint 1&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 1 is Enabled" sap:VirtualizedContainerService.HintSize="714,3014.4" sap2010:WorkflowViewState.IdRef="If_5">
                       <If.Then>
                         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="680,1813.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
                           <sap:WorkflowViewStateService.ViewState>
@@ -891,7 +891,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence sap:VirtualizedContainerService.HintSize="492,2337.2" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                        <Sequence sap:VirtualizedContainerService.HintSize="492,2004.4" sap2010:WorkflowViewState.IdRef="Sequence_50">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
                             <Variable x:TypeArguments="x:String" Name="SiteID" />
@@ -909,7 +909,6 @@
                           <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="458,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_2" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]" />
                           <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="458,280.4" sap2010:WorkflowViewState.IdRef="Get_Site_ID_3" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]" />
                           <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="458,280.4" sap2010:WorkflowViewState.IdRef="Get_List_ID_2" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]" />
-                          <ds:Upload_Small_File DisplayName="Upload Small File" sap:VirtualizedContainerService.HintSize="458,332.8" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/Allocated/&quot;+strCertificate]" in_LocalFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSiteID="[SiteID]" />
                           <Assign sap:VirtualizedContainerService.HintSize="458,114.4" sap2010:WorkflowViewState.IdRef="Assign_37">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:String">[strCertificateEncoded]</OutArgument>
@@ -927,7 +926,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request - Get File ID" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/root:/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificateEncoded.replace(&quot; &quot;,&quot;%20&quot;)]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
+                                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request - Get File ID" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/root:/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificateEncoded.replace(&quot; &quot;,&quot;%20&quot;)]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
                                     <ui:HttpClient.Attachments>
                                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                                     </ui:HttpClient.Attachments>
@@ -969,7 +968,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&#xA;  &quot;&quot;parentReference&quot;&quot;: {&#xA;    &quot;&quot;id&quot;&quot;: &quot;&quot;015E3YKJK2DKTI5LE76JHZSRO3GNZP6CJG&quot;&quot;&#xA;  }&#xA;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - Original" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/items/&quot;+strFileID]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="PATCH" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
+                                  <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&#xA;  &quot;&quot;parentReference&quot;&quot;: {&#xA;    &quot;&quot;id&quot;&quot;: &quot;&quot;015E3YKJKT7YBWXNSPYRBKHA7KOQ5C6M5E&quot;&quot;&#xA;  }&#xA;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - Move File" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/items/&quot;+strFileID]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_5" Method="PATCH" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
                                     <ui:HttpClient.Attachments>
                                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                                     </ui:HttpClient.Attachments>
@@ -1011,7 +1010,7 @@
                               <av:Point x:Key="ShapeLocation">270,580</av:Point>
                               <av:Size x:Key="ShapeSize">60,60</av:Size>
                               <av:PointCollection x:Key="TrueConnector">270,610 155,610</av:PointCollection>
-                              <av:PointCollection x:Key="FalseConnector">330,610 360,610 360,260 355,260</av:PointCollection>
+                              <av:PointCollection x:Key="FalseConnector">330,610 371.20000000000005,610 371.20000000000005,260 355,260</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <FlowDecision.True>
@@ -1022,7 +1021,7 @@
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="552,4629.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                              <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="552,4744" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="x:String" Name="strRecipient" />
                                   <Variable x:TypeArguments="x:String" Name="strBody" />
@@ -1037,7 +1036,15 @@
                                     <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[g_TransactionItem("FromAddress").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[system.text.RegularExpressions.Regex.Matches(g_TransactionItem("BodyPreview").ToString,"(?&lt;=Email:).*(?=\n)")(0).ToString.Trim]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Remove Extra" sap:VirtualizedContainerService.HintSize="518,114.4" sap2010:WorkflowViewState.IdRef="Assign_39">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[system.text.regularexpressions.regex.replace(strRecipient,"&lt;.*&gt;","").ToString.Trim]</InArgument>
                                   </Assign.Value>
                                 </Assign>
                                 <Assign DisplayName="Assign Body" sap:VirtualizedContainerService.HintSize="518,114.4" sap2010:WorkflowViewState.IdRef="Assign_33">
@@ -1070,7 +1077,7 @@
                                       </Assign>
                                       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123.2" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString).ToString]" />
                                       <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Partial Successs" sap:VirtualizedContainerService.HintSize="450,490" sap2010:WorkflowViewState.IdRef="Send_Email_1" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]" />
-                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="450,1078.4" sap2010:WorkflowViewState.IdRef="If_11">
+                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="450,1078.4" sap2010:WorkflowViewState.IdRef="If_11">
                                         <If.Then>
                                           <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                             <Sequence.Variables>
@@ -1113,7 +1120,7 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="450,1972" sap2010:WorkflowViewState.IdRef="If_12">
+                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="450,1972" sap2010:WorkflowViewState.IdRef="If_12">
                                         <If.Then>
                                           <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,1719.2" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                             <Sequence.Variables>
