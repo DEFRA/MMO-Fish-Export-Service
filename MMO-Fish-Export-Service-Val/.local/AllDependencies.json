@@ -34489,15 +34489,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kl000096\\.nuget\\packages\\": {}
+    "C:\\Users\\da000087\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "MMO-Fish-Export-Service-Val",
       "projectName": "MMO-Fish-Export-Service-Val",
-      "projectPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local",
-      "packagesPath": "C:\\Users\\kl000096\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local"
+      "projectPath": "C:\\Users\\da000087\\OneDrive - Defra\\UiPath\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local",
+      "packagesPath": "C:\\Users\\da000087\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\da000087\\OneDrive - Defra\\UiPath\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local"
     },
     "frameworks": {
       "net8.0-windows7.0": {
