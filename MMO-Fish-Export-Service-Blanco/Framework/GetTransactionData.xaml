@@ -65,6 +65,14 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>DRACOE_Microsoft_Graph_64.Authentication</x:String>
       <x:String>DRACOE_Microsoft_Graph_64.Exchange</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -155,9 +163,12 @@
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>DRACOE Microsoft Graph 64</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1266.8,4256" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="875.6,3783.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listMailMessages" />
     </Sequence.Variables>
@@ -167,7 +178,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="570,4155.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+    <Sequence sap:VirtualizedContainerService.HintSize="570,3682.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strFolderIDInProgress" />
         <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
@@ -180,13 +191,57 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message - Species File" sap:VirtualizedContainerService.HintSize="536,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Retrieving Transaction Data...&quot;]" />
-      <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="536,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_1" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]" />
-      <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - To Process" sap:VirtualizedContainerService.HintSize="536,280.4" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - To Process&quot;).ToString]" out_strFolderID="[strFolderID]" />
-      <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - In Progress" sap:VirtualizedContainerService.HintSize="536,280.4" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_2" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - In Progress&quot;).ToString]" out_strFolderID="[strFolderIDInProgress]" />
-      <de:Get_Emails in_strEmailID="{x:Null}" in_strQueryParameters="{x:Null}" DisplayName="Get Emails" sap:VirtualizedContainerService.HintSize="536,437.6" sap2010:WorkflowViewState.IdRef="Get_Emails_1" in_booGetAttachmentNames="True" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolder="[strFolderID]" out_dtEmails="[dtEmails]" />
-      <If Condition="[dtEmails.rows.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="536,2617.6" sap2010:WorkflowViewState.IdRef="If_5">
+      <ui:RetryScope DisplayName="Retry Scope - Get Folder IDs and Emails" sap:VirtualizedContainerService.HintSize="536,488" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+        <ui:RetryScope.ActivityBody>
+          <ActivityAction>
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,278.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_1" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </da:Get_Bearer_Token>
+              <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - To Process" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - To Process&quot;).ToString]" out_strFolderID="[strFolderID]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </de:Get_Folder_ID>
+              <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - In Progress" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_2" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - In Progress&quot;).ToString]" out_strFolderID="[strFolderIDInProgress]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </de:Get_Folder_ID>
+              <de:Get_Emails in_strEmailID="{x:Null}" in_strQueryParameters="{x:Null}" DisplayName="Get Emails" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_Emails_1" in_booGetAttachmentNames="True" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolder="[strFolderID]" out_dtEmails="[dtEmails]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </de:Get_Emails>
+            </Sequence>
+          </ActivityAction>
+        </ui:RetryScope.ActivityBody>
+        <ui:RetryScope.Condition>
+          <ActivityFunc x:TypeArguments="x:Boolean" />
+        </ui:RetryScope.Condition>
+      </ui:RetryScope>
+      <If Condition="[dtEmails.rows.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="536,2935.6" sap2010:WorkflowViewState.IdRef="If_5">
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502,2289.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502,2607.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
               <Variable x:TypeArguments="snm:MailMessage" Name="mailCurrentMessage" />
               <Variable x:TypeArguments="snm:MailMessage" Name="mailInProgressMessage" />
@@ -199,9 +254,9 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[dtEmails.rows.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="468,378.4" sap2010:WorkflowViewState.IdRef="If_6">
+            <If Condition="[dtEmails.rows.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="468,380" sap2010:WorkflowViewState.IdRef="If_6">
               <If.Then>
-                <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_9">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                   </Assign.To>
@@ -211,7 +266,7 @@
                 </Assign>
               </If.Then>
               <If.Else>
-                <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,82.4" sap2010:WorkflowViewState.IdRef="Assign_10">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                   </Assign.To>
@@ -247,8 +302,24 @@
                 </Sequence>
               </If.Else>
             </If>
-            <de:Move_Email DisplayName="Move Email - In Progress" sap:VirtualizedContainerService.HintSize="468,332.8" sap2010:WorkflowViewState.IdRef="Move_Email_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[dtEmails(0)(0).tostring]" in_strNewFolderID="[strFolderIDInProgress]" out_strNEWEmailID="[EmailID]" />
-            <Assign sap:VirtualizedContainerService.HintSize="468,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <ui:RetryScope DisplayName="Retry Scope - Move email to in progress" sap:VirtualizedContainerService.HintSize="468,593.6" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,384" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <de:Move_Email DisplayName="Move Email - In Progress" sap:VirtualizedContainerService.HintSize="382,324" sap2010:WorkflowViewState.IdRef="Move_Email_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[dtEmails(0)(0).tostring]" in_strNewFolderID="[strFolderIDInProgress]" out_strNEWEmailID="[EmailID]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <Assign DisplayName="Assign subject" sap:VirtualizedContainerService.HintSize="468,114.4" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strSubject]</OutArgument>
               </Assign.To>
@@ -256,8 +327,32 @@
                 <InArgument x:TypeArguments="x:String">[dtEmails(0)("Subject").tostring]</InArgument>
               </Assign.Value>
             </Assign>
-            <de:Get_Emails in_strQueryParameters="{x:Null}" DisplayName="Get Emails - In progress" sap:VirtualizedContainerService.HintSize="468,437.6" sap2010:WorkflowViewState.IdRef="Get_Emails_2" in_booGetAttachmentNames="True" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[EmailID]" in_strFolder="[strFolderIDInProgress]" out_dtEmails="[dtEmails]" />
-            <Assign sap:VirtualizedContainerService.HintSize="468,105.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="468,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Got email with subject: &quot; &amp; strSubject]" />
+            <ui:RetryScope DisplayName="Retry Scope - get emails in In Progress" sap:VirtualizedContainerService.HintSize="468,317.6" sap2010:WorkflowViewState.IdRef="RetryScope_3">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <de:Get_Emails in_strQueryParameters="{x:Null}" DisplayName="Get Emails - In progress" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_Emails_2" in_booGetAttachmentNames="True" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[EmailID]" in_strFolder="[strFolderIDInProgress]" out_dtEmails="[dtEmails]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </de:Get_Emails>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+            </ui:RetryScope>
+            <Assign DisplayName="Assign email to transaction item" sap:VirtualizedContainerService.HintSize="468,105.6" sap2010:WorkflowViewState.IdRef="Assign_7">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataRow">[g_TransactionItem]</OutArgument>
               </Assign.To>
@@ -268,13 +363,13 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,165.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502,165.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign DisplayName="Assign transaction item as nothing" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataRow">[g_TransactionItem]</OutArgument>
               </Assign.To>
