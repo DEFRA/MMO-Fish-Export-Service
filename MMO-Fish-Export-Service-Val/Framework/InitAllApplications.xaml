@@ -109,7 +109,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1065.6,2249.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="875.6,2776" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="ResponseCode" />
       <Variable x:TypeArguments="x:String" Name="strVesselFile" />
@@ -139,7 +139,7 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <If Condition="[ResponseCode.ToString=&quot;200&quot;]" DisplayName="If Successful:" sap:VirtualizedContainerService.HintSize="450,830.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[ResponseCode.ToString=&quot;200&quot;]" DisplayName="If Successful:" sap:VirtualizedContainerService.HintSize="450,1006.4" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,417.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
@@ -152,13 +152,14 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,242" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,417.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="SpeciesFile.csv" DisplayName="Copy File - Redudancy" sap:VirtualizedContainerService.HintSize="382,182" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="SpeciesFile - Copy.csv" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="SpeciesFile.csv" DisplayName="Copy File - Redudancy" sap:VirtualizedContainerService.HintSize="382,190.8" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="SpeciesFile - Copy.csv" />
+          <ui:LogMessage DisplayName="Log Message - Species File Success" sap:VirtualizedContainerService.HintSize="382,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Species file acquired&quot;]" />
         </Sequence>
       </If.Else>
     </If>
@@ -201,7 +202,9 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message - Species File" sap:VirtualizedContainerService.HintSize="450,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Reading Species File&quot;]" />
     <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[g_SpeciesFile]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Read CSV - Species File" FilePath="SpeciesFile.csv" sap:VirtualizedContainerService.HintSize="450,190.8" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+    <ui:LogMessage DisplayName="Log Message - Species File" sap:VirtualizedContainerService.HintSize="450,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Reading Vessal File&quot;]" />
     <ui:ReadTextFile File="{x:Null}" Content="[strVesselFile]" DisplayName="Read Text File - Vessel Json" FileName="[ResponseAttachment.LocalPath]" sap:VirtualizedContainerService.HintSize="450,113.2" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <Assign DisplayName="Convert Json to Datatable" sap:VirtualizedContainerService.HintSize="450,105.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>

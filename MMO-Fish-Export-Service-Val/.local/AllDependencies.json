@@ -240,6 +240,64 @@
           "lib/net6.0-windows7.0/DRACOE.Logging.64_Expressions_9923843.dll": {}
         }
       },
+      "DRACOE.Microsoft.Graph.64/1.0.53": {
+        "type": "package",
+        "dependencies": {
+          "UiPath.Excel.Activities": "2.23.5",
+          "UiPath.System.Activities": "24.10.4",
+          "UiPath.WebAPI.Activities": "1.21.1"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14489541.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14534720.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_15363583.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_18837654.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_19595475.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_20795162.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21232620.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21701866.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_22698164.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_23873320.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_26186746.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_31721675.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_32407888.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_37621562.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_40089287.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_41924434.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42024595.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42402619.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_44733251.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_45066622.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46303369.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46772315.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_48420008.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_49915127.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_60115921.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63284352.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63558765.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_64127467.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_65945651.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66101417.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66104025.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66158435.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66346036.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66838909.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_8724759.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9235240.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9966763.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "DRACOE.PopUps.64/1.0.9": {
         "type": "package",
         "dependencies": {
@@ -8526,6 +8584,64 @@
           "lib/net6.0-windows7.0/DRACOE.Logging.64_Expressions_9923843.dll": {}
         }
       },
+      "DRACOE.Microsoft.Graph.64/1.0.53": {
+        "type": "package",
+        "dependencies": {
+          "UiPath.Excel.Activities": "2.23.5",
+          "UiPath.System.Activities": "24.10.4",
+          "UiPath.WebAPI.Activities": "1.21.1"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/_._": {}
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14489541.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14534720.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_15363583.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_18837654.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_19595475.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_20795162.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21232620.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21701866.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_22698164.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_23873320.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_26186746.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_31721675.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_32407888.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_37621562.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_40089287.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_41924434.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42024595.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42402619.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_44733251.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_45066622.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46303369.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46772315.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_48420008.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_49915127.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_60115921.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63284352.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63558765.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_64127467.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_65945651.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66101417.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66104025.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66158435.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66346036.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66838909.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_8724759.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9235240.dll": {},
+          "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9966763.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "DRACOE.PopUps.64/1.0.9": {
         "type": "package",
         "dependencies": {
@@ -16714,6 +16830,120 @@
         "lib/net6.0-windows7.0/DRACOE.Logging.64_Expressions_52424502.dll",
         "lib/net6.0-windows7.0/DRACOE.Logging.64_Expressions_64417963.dll",
         "lib/net6.0-windows7.0/DRACOE.Logging.64_Expressions_9923843.dll"
+      ]
+    },
+    "DRACOE.Microsoft.Graph.64/1.0.53": {
+      "sha512": "Om6alFVo7gm+KhPjMUgHpHV0MpaEHMIuKgzlarNcJeJlFX/tCQindSxlmooLmFvkrUGQXTwxHZPwbY4SI7GpCA==",
+      "type": "package",
+      "path": "dracoe.microsoft.graph.64/1.0.53",
+      "files": [
+        ".nupkg.metadata",
+        "content/.project/PackageBindingsMetadata.json",
+        "content/.project/design.json",
+        "content/.settings/Design/settings-afad0842.json",
+        "content/.settings/Release/settings-9e9290da.json",
+        "content/.settings/Release/settings-afad0842.json",
+        "content/Assets/SaveDraftPayload.txt",
+        "content/Assets/SendEmailPayload.txt",
+        "content/Authentication/Get Bearer Token.xaml",
+        "content/Error Handling/Response Codes.xaml",
+        "content/Exchange Tests - Dev.xaml",
+        "content/Exchange/Apply Category.xaml",
+        "content/Exchange/Forward Email.xaml",
+        "content/Exchange/Forward Email.xaml.json",
+        "content/Exchange/Generate Email Object.xaml",
+        "content/Exchange/Get Conversation.xaml",
+        "content/Exchange/Get Emails.xaml",
+        "content/Exchange/Get Emails.xaml.json",
+        "content/Exchange/Get Folder ID.xaml",
+        "content/Exchange/Get Folder ID.xaml.json",
+        "content/Exchange/Get Folder List.xaml",
+        "content/Exchange/Get Folder Name.xaml",
+        "content/Exchange/Move Email.xaml",
+        "content/Exchange/Move Email.xaml.json",
+        "content/Exchange/Reply Email.xaml",
+        "content/Exchange/Save Draft.xaml",
+        "content/Exchange/Save Draft.xaml.json",
+        "content/Exchange/Save Email Attachments.xaml",
+        "content/Exchange/Send Email.xaml",
+        "content/Exchange/Send Email.xaml.json",
+        "content/Rest API/Get REST Auth Token.xaml",
+        "content/Rest API/Get REST Auth Token.xaml.json",
+        "content/Rest API/TEST.xaml",
+        "content/Rest API/Upload Attachment to SPOL List.xaml",
+        "content/Rest API/Upload Attachment to SPOL List.xaml.json",
+        "content/SPOL Tests - DEV.xaml",
+        "content/SharePoint/Add Sharepoint List Item.xaml",
+        "content/SharePoint/Add Sharepoint List Item.xaml.json",
+        "content/SharePoint/CheckOut-In File.xaml",
+        "content/SharePoint/CheckOut-In File.xaml.json",
+        "content/SharePoint/Create Folder.xaml",
+        "content/SharePoint/Delete File or Folder.xaml",
+        "content/SharePoint/Delete Sharepoint List Item.xaml",
+        "content/SharePoint/Download File.xaml",
+        "content/SharePoint/Download File.xaml.json",
+        "content/SharePoint/Edit Sharepoint List Item.xaml",
+        "content/SharePoint/Get DriveID.xaml",
+        "content/SharePoint/Get DriveID.xaml.json",
+        "content/SharePoint/Get Folder Contents.xaml",
+        "content/SharePoint/Get Folder Contents.xaml.json",
+        "content/SharePoint/Get Item ID.xaml",
+        "content/SharePoint/Get Item ID.xaml.json",
+        "content/SharePoint/Get List ID.xaml",
+        "content/SharePoint/Get List Item ID.xaml",
+        "content/SharePoint/Get List Items.xaml",
+        "content/SharePoint/Get List Items.xaml.json",
+        "content/SharePoint/Get Site ID.xaml",
+        "content/SharePoint/Update File MetaData.xaml",
+        "content/SharePoint/Upload Large File.xaml",
+        "content/SharePoint/Upload Small File.xaml",
+        "content/SharePoint/Upload Small File.xaml.json",
+        "content/TEST OUTPUT.csv",
+        "content/bindings.json",
+        "content/bindings_v2.json",
+        "content/project.json",
+        "contentFiles/any/any/.objects/.metadata",
+        "contentFiles/any/any/.objects/.type",
+        "dracoe.microsoft.graph.64.1.0.53.nupkg.sha512",
+        "dracoe.microsoft.graph.64.nuspec",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14489541.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_14534720.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_15363583.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_18837654.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_19595475.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_20795162.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21232620.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_21701866.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_22698164.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_23873320.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_26186746.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_31721675.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_32407888.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_37621562.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_40089287.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_41924434.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42024595.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_42402619.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_44733251.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_45066622.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46303369.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_46772315.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_48420008.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_49915127.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_60115921.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63284352.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_63558765.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_64127467.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_65945651.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66101417.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66104025.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66158435.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66346036.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_66838909.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_8724759.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9235240.dll",
+        "lib/net8.0-windows7.0/DRACOE Microsoft Graph 64_Expressions_9966763.dll"
       ]
     },
     "DRACOE.PopUps.64/1.0.9": {
@@ -34244,6 +34474,7 @@
     "": [],
     "net8.0-windows7.0": [
       "DRACOE.Logging.64 >= 1.0.9 <= 1.0.9",
+      "DRACOE.Microsoft.Graph.64 >= 1.0.53 <= 1.0.53",
       "DRACOE.PopUps.64 >= 1.0.9 <= 1.0.9",
       "InternalLabs.ExtractTablesFromPDF.Activities >= 1.0.1 <= 1.0.1",
       "UiPath.Excel.Activities >= 2.24.4 <= 2.24.4",
@@ -34258,15 +34489,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kl000096\\.nuget\\packages\\": {}
+    "C:\\Users\\da000087\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "MMO-Fish-Export-Service-Val",
       "projectName": "MMO-Fish-Export-Service-Val",
-      "projectPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local",
-      "packagesPath": "C:\\Users\\kl000096\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local"
+      "projectPath": "C:\\Users\\da000087\\OneDrive - Defra\\UiPath\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local",
+      "packagesPath": "C:\\Users\\da000087\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\da000087\\OneDrive - Defra\\UiPath\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Val\\.local"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -34275,6 +34506,11 @@
             "include": "Runtime",
             "target": "Package",
             "version": "[1.0.9, 1.0.9]"
+          },
+          "DRACOE.Microsoft.Graph.64": {
+            "include": "Runtime",
+            "target": "Package",
+            "version": "[1.0.53, 1.0.53]"
           },
           "DRACOE.PopUps.64": {
             "include": "Runtime",
