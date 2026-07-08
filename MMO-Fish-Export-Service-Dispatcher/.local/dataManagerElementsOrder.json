@@ -4,6 +4,8 @@
       "Path": null,
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "g_Val&",
+        "g_Blanko&",
         "g_CredExchangePassword&",
         "g_CredExchangeUsername&",
         "g_arrCaseID&",
@@ -20,8 +22,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "g_Val&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_Blanko&768982fd-515f-4a33-a835-f3ca71fb07c3",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
         "TransactionNumber&StateMachine_1",
@@ -43,13 +43,15 @@
         "boolShouldStop&Sequence_25",
         "dateCaseStartTime&State_3",
         "strCaseIDText&Sequence_28",
-        "g_arrCaseID&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_Config&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_swProcessingTimer&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_intExitPoint&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_CredExchangePassword&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_CredExchangeUsername&768982fd-515f-4a33-a835-f3ca71fb07c3",
-        "g_TransactionItem&768982fd-515f-4a33-a835-f3ca71fb07c3"
+        "g_arrCaseID&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_Config&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_swProcessingTimer&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_intExitPoint&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_CredExchangePassword&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_CredExchangeUsername&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_TransactionItem&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_Val&eec30145-bf16-4798-b17b-c9b732f4dde0",
+        "g_Blanko&eec30145-bf16-4798-b17b-c9b732f4dde0"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_boolUnattended"
@@ -199,6 +201,15 @@
       "Path": "Framework/CloseAllApplications.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "g_arrCaseID&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_Config&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_swProcessingTimer&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_intExitPoint&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_CredExchangePassword&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_CredExchangeUsername&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_TransactionItem&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_Val&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
+        "g_Blanko&dec40e51-ccd7-4625-9bb8-3ed4f5e79a2f",
         "g_arrCaseID&85d5bc3b-d7bc-462a-810f-25402cd3e6f7",
         "g_Config&85d5bc3b-d7bc-462a-810f-25402cd3e6f7",
         "g_swProcessingTimer&85d5bc3b-d7bc-462a-810f-25402cd3e6f7",
