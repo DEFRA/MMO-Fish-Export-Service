@@ -20,14 +20,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "g_QueueItem&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_arrCaseID&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_Config&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_swProcessingTimer&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_intExitPoint&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_CredExchangePassword&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_CredExchangeUsername&72d0cc94-3609-4d16-a224-bbdc559d57ed",
-        "g_TransactionItem&72d0cc94-3609-4d16-a224-bbdc559d57ed",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
         "TransactionNumber&StateMachine_1",
@@ -48,7 +40,15 @@
         "boolFolderExists&Sequence_42",
         "boolShouldStop&Sequence_25",
         "dateCaseStartTime&State_3",
-        "strCaseIDText&Sequence_28"
+        "strCaseIDText&Sequence_28",
+        "g_arrCaseID&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_Config&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_swProcessingTimer&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_intExitPoint&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_CredExchangePassword&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_CredExchangeUsername&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_TransactionItem&0c61ad31-e098-4126-a079-772e187c1ee3",
+        "g_QueueItem&0c61ad31-e098-4126-a079-772e187c1ee3"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_boolUnattended"
