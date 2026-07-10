@@ -22,7 +22,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.15.0",
-  "projectVersion": "1.0.59",
+  "projectVersion": "1.0.68-alpha.3",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -50,7 +50,6 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "ValidateSpecies.xaml",
         "MVS Date.xaml"
       ]
     },
