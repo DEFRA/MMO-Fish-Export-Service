@@ -240,11 +240,7 @@
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="booValidEmail" />
       <Variable x:TypeArguments="sd2:DataTable" Name="datCatchCertificates" />
-      <Variable x:TypeArguments="x:Int32" Name="intCertRowCounter">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="intCertRowCounter" />
       <Variable x:TypeArguments="sd2:DataTable" Name="datMultiVessel" />
       <Variable x:TypeArguments="sd2:DataTable" Default="[New System.Data.DataTable]" Name="datSection3" />
       <Variable x:TypeArguments="sd2:DataTable" Name="datSection8" />
@@ -492,11 +488,7 @@
                             <Variable x:TypeArguments="x:Boolean" Name="booTextExists" />
                             <Variable x:TypeArguments="x:String" Name="strPageNo" />
                             <Variable x:TypeArguments="x:String" Name="strSection8" />
-                            <Variable x:TypeArguments="x:Int32" Name="intRowCounter">
-                              <Variable.Default>
-                                <Literal x:TypeArguments="x:Int32" />
-                              </Variable.Default>
-                            </Variable>
+                            <Variable x:TypeArguments="x:Int32" Default="0" Name="intRowCounter" />
                             <Variable x:TypeArguments="x:String" Name="strMultiVesselText" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
@@ -583,7 +575,7 @@
                             <uix:NGetText.Target>
                               <uix:TargetAnchorable CVScreenId="2525ada8-701b-4416-abd0-4a54c76fcac6" CvElementArea="1252, 935, 1187, 53" CvType="InputBox" DesignTimeRectangle="1252, 935, 1187, 53" ElementType="InputBox" ElementVisibilityArgument="Interactive" Guid="4f1b9b00-d919-4b74-982f-e68007c923e4" InformativeScreenshot="127c9481123a375032fbb29a22e9cfe8.jpg" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='acrobat.exe' cls='AcrobatSDIWindow' title='Completed GBR-2026-CM-A9D1DE5418 Test G44.pdf - Adobe Acrobat Re*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6" WaitForReadyArgument="Interactive">
                                 <uix:TargetAnchorable.Anchors>
-                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                                     <uix:Target CVScreenId="2525ada8-701b-4416-abd0-4a54c76fcac6" CvTextArea="955, 935, 170, 35" CvTextArgument="Fishing Gear" CvType="Text" DesignTimeRectangle="955, 935, 170, 35" ElementType="Text" Guid="65d17a62-b914-4536-99bc-69d5c2cb0a0b" SearchSteps="CV" TargetType="ComputerVisionBased" />
                                   </scg:List>
                                 </uix:TargetAnchorable.Anchors>
@@ -6001,7 +5993,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">590,415 590,465</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Validate Species" sap:VirtualizedContainerService.HintSize="808,9102.4" sap2010:WorkflowViewState.IdRef="Sequence_206">
+                      <Sequence DisplayName="Validate Species" sap:VirtualizedContainerService.HintSize="808,9428" sap2010:WorkflowViewState.IdRef="Sequence_206">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="sd2:DataTable" Name="datSpecies" />
                           <Variable x:TypeArguments="x:String" Name="strSpeciesRegex" />
@@ -6021,7 +6013,7 @@
                             <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:Comment sap:VirtualizedContainerService.HintSize="774,147.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Removed the species code only validation, MMO wanted to now reject if only species code is entered. If this needs re-adding, add this condition to the regex below: |^[A-Z]{3}$" />
+                        <ui:Comment sap:VirtualizedContainerService.HintSize="774,146.8" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Removed the species code only validation, MMO wanted to now reject if only species code is entered. If this needs re-adding, add this condition to the regex below: |^[A-Z]{3}$" />
                         <Assign DisplayName="Assign regex for Species Code" sap:VirtualizedContainerService.HintSize="774,114.4" sap2010:WorkflowViewState.IdRef="Assign_324">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[strSpeciesRegex]</OutArgument>
@@ -6030,7 +6022,7 @@
                             <InArgument x:TypeArguments="x:String">(?:(?&lt;=\()[A-Z]{3}(?=\)?$)|^[A-Z]{3}(?=\s)|(?&lt;=\s)[A-Z]{3}$)</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <If Condition="[strInvalidSpecies is Nothing]" DisplayName="If Invalid Species is Nothing" sap:VirtualizedContainerService.HintSize="774,420.4" sap2010:WorkflowViewState.IdRef="If_105">
+                        <If Condition="[strInvalidSpecies is Nothing]" DisplayName="If Invalid Species is Nothing" sap:VirtualizedContainerService.HintSize="774,361.6" sap2010:WorkflowViewState.IdRef="If_105">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -6057,7 +6049,7 @@
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,83.6" sap2010:WorkflowViewState.IdRef="Sequence_300">
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,24.8" sap2010:WorkflowViewState.IdRef="Sequence_300">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -6067,7 +6059,7 @@
                             </Sequence>
                           </If.Else>
                         </If>
-                        <If Condition="[datMultiVessel.rows.count&gt;0]" DisplayName="If MVS Completed:" sap:VirtualizedContainerService.HintSize="774,2624.8" sap2010:WorkflowViewState.IdRef="If_66">
+                        <If Condition="[datMultiVessel.rows.count&gt;0]" DisplayName="If MVS Completed:" sap:VirtualizedContainerService.HintSize="774,2687.2" sap2010:WorkflowViewState.IdRef="If_66">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -6105,7 +6097,7 @@
                                               <OutArgument x:TypeArguments="x:String">[strSpeciesCode]</OutArgument>
                                             </Assign.To>
                                             <Assign.Value>
-                                              <InArgument x:TypeArguments="x:String">[System.text.regularexpressions.regex.matches(Row(0).tostring,strSpeciesRegex)(0).tostring.Trim]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[System.text.regularexpressions.regex.matches(Row(0).tostring.replace("0","O").replace("1","I").replace("l","I"),strSpeciesRegex)(0).tostring.Trim]</InArgument>
                                             </Assign.Value>
                                           </Assign>
                                         </TryCatch.Try>
@@ -6164,19 +6156,19 @@
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="581.6,1226.8" sap2010:WorkflowViewState.IdRef="Sequence_209">
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="581.6,1289.2" sap2010:WorkflowViewState.IdRef="Sequence_209">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datSection3]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="547.6,1166.8" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datSection3]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="547.6,1229.2" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd2:DataRow">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="sd2:DataRow" Name="Row" />
                                     </ActivityAction.Argument>
-                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="513.6,977.2" sap2010:WorkflowViewState.IdRef="Sequence_212">
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="513.6,1039.6" sap2010:WorkflowViewState.IdRef="Sequence_212">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="strSpeciesCode" />
                                         <Variable x:TypeArguments="x:String" Name="strSpeciesName" />
@@ -6221,7 +6213,7 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
-                                      <ui:MultipleAssign DisplayName="Multiple Assign - Species Name" sap:VirtualizedContainerService.HintSize="479.6,180.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
+                                      <ui:MultipleAssign DisplayName="Multiple Assign - Species Name" sap:VirtualizedContainerService.HintSize="479.6,243.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_23">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_72">
@@ -6240,6 +6232,22 @@
                                                 <InArgument x:TypeArguments="x:String">[strSpeciesName.replace(strSpeciesCode,"")]</InArgument>
                                               </ui:AssignOperation.Value>
                                             </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_143">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[strSpeciesName]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[strSpeciesName.replace("0","O").replace("1","l")]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_144">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">[strSpeciesCode]</OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">[strSpeciesCode.replace("0","O").replace("1","I").replace("l","I")]</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
                                           </scg:List>
                                         </ui:MultipleAssign.AssignOperations>
                                       </ui:MultipleAssign>
@@ -6252,7 +6260,7 @@
                             </Sequence>
                           </If.Else>
                         </If>
-                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datSpecies]" DisplayName="For Each Row in datSpecies" sap:VirtualizedContainerService.HintSize="774,5353.6" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datSpecies]" DisplayName="For Each Row in datSpecies" sap:VirtualizedContainerService.HintSize="774,5676" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd2:DataRow">
                               <ActivityAction.Argument>
