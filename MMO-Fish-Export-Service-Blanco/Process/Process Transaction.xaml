@@ -174,15 +174,21 @@
       <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
       <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
       <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1276.8000000000002,778.84" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="1242,810" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="booValidRequest" />
       <Variable x:TypeArguments="x:String" Name="strCertificate" />
       <Variable x:TypeArguments="x:String" Name="strDocumentNumber" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="intNoRequested" />
       <Variable x:TypeArguments="x:Int32" Name="intCertificateCounter" />
+      <Variable x:TypeArguments="sd:DataTable" Name="datUpdate" />
+      <Variable x:TypeArguments="x:String" Name="strDocumentList" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -195,14 +201,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+    <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">435,115</av:Point>
           <av:Size x:Key="ShapeSize">110,70</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">490,185 490,230</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">490,185 490,330</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="Is the email a blank catch certificate request:" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -214,25 +220,25 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="639.6,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Is email a catch certificate request?&quot;]" />
-        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each File in Working Folder" sap:VirtualizedContainerService.HintSize="639.6,311.6" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString)]">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Is email a catch certificate request?&quot;]" />
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each File in Working Folder" sap:VirtualizedContainerService.HintSize="452,295" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:String">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:String" Name="File" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,164.4" sap2010:WorkflowViewState.IdRef="Sequence_43">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="Sequence_43">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="382,104.4" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[File.tostring]" />
+                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[File.tostring]" />
               </Sequence>
             </ActivityAction>
           </ui:ForEach.Body>
         </ui:ForEach>
-        <Assign DisplayName="Set Body Text" sap:VirtualizedContainerService.HintSize="639.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign DisplayName="Set Body Text" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[strBodyText]</OutArgument>
           </Assign.To>
@@ -240,9 +246,9 @@
             <InArgument x:TypeArguments="x:String">[g_TransactionItem("BodyPreview").ToString.ToLower]</InArgument>
           </Assign.Value>
         </Assign>
-        <If Condition="[strBodyText.contains(&quot;email: &quot;) and strBodyText.contains(&quot;is this a request for a blank document: &quot;) and strBodyText.contains(&quot;type of document required: &quot;) and strBodyText.contains(&quot;catch certificate&quot;) and strBodyText.contains(&quot;number of documents required: &quot;) and strBodyText.contains(&quot;direct landing: &quot;)]" DisplayName="If email body contains email template:" sap:VirtualizedContainerService.HintSize="639.6,1082.4" sap2010:WorkflowViewState.IdRef="If_13">
+        <If Condition="[strBodyText.contains(&quot;email: &quot;) and strBodyText.contains(&quot;is this a request for a blank document: &quot;) and strBodyText.contains(&quot;type of document required: &quot;) and strBodyText.contains(&quot;catch certificate&quot;) and strBodyText.contains(&quot;number of documents required: &quot;) and strBodyText.contains(&quot;direct landing: &quot;)]" DisplayName="If email body contains email template:" sap:VirtualizedContainerService.HintSize="452,1291" sap2010:WorkflowViewState.IdRef="If_13">
           <If.Then>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,570" sap2010:WorkflowViewState.IdRef="Sequence_38">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,751" sap2010:WorkflowViewState.IdRef="Sequence_38">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="strNoRequested" />
                 <Variable x:TypeArguments="x:String" Name="strDocumentRequired" />
@@ -252,7 +258,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="setBooValidRequest to TRUE" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign DisplayName="setBooValidRequest to TRUE" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_30">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[booValidRequest]</OutArgument>
                 </Assign.To>
@@ -260,7 +266,7 @@
                   <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="Assign No Requested" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_27">
+              <Assign DisplayName="Assign No Requested" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_27">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[strNoRequested]</OutArgument>
                 </Assign.To>
@@ -268,7 +274,7 @@
                   <InArgument x:TypeArguments="x:String">[system.text.RegularExpressions.Regex.matches(strBodytext,"(?&lt;=number of documents required:).*(?=\n)")(0).ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="Convert to int32" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_31">
+              <Assign DisplayName="Convert to int32" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_31">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[intNoRequested]</OutArgument>
                 </Assign.To>
@@ -276,17 +282,17 @@
                   <InArgument x:TypeArguments="x:Int32">[cint(strNoRequested)]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Catch certificate confirmed&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Catch certificate confirmed&quot;]" />
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,341.2" sap2010:WorkflowViewState.IdRef="Sequence_39">
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,401" sap2010:WorkflowViewState.IdRef="Sequence_39">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="setBooValidRequest to FALSE" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_29">
+              <Assign DisplayName="setBooValidRequest to FALSE" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_29">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Boolean">[booValidRequest]</OutArgument>
                 </Assign.To>
@@ -294,11 +300,11 @@
                   <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,166.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Not a Catch certificate&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Not a Catch certificate&quot;]" />
             </Sequence>
           </If.Else>
         </If>
-        <ui:CommentOut DisplayName="Comment Out - Old Code - Pre Template" sap:VirtualizedContainerService.HintSize="639.6,2760.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut DisplayName="Comment Out - Old Code - Pre Template" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
           <ui:CommentOut.Body>
             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="604,2610" sap2010:WorkflowViewState.IdRef="Sequence_40">
               <sap:WorkflowViewStateService.ViewState>
@@ -529,12 +535,12 @@
           </ui:CommentOut.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:CommentOut>
-        <Assign DisplayName="Assign CertificateCounter" sap:VirtualizedContainerService.HintSize="639.6,105.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+        <Assign DisplayName="Assign CertificateCounter" sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="Assign_17">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Int32">[intCertificateCounter]</OutArgument>
           </Assign.To>
@@ -548,715 +554,913 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <av:Point x:Key="ShapeLocation">460,230</av:Point>
+              <av:Point x:Key="ShapeLocation">460,330</av:Point>
               <av:Size x:Key="ShapeSize">60,60</av:Size>
-              <av:PointCollection x:Key="TrueConnector">460,260 295,260</av:PointCollection>
-              <av:PointCollection x:Key="FalseConnector">520,260 625,260</av:PointCollection>
+              <av:PointCollection x:Key="TrueConnector">460,360 295,360</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">520,360 625,360</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <FlowStep x:Name="__ReferenceID7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">185,225</av:Point>
+                  <av:Point x:Key="ShapeLocation">185,325</av:Point>
                   <av:Size x:Key="ShapeSize">110,70</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">240,295 240,345</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">240,395 240,445</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Sharepoint - Get Next Certificate &amp; Download " sap:VirtualizedContainerService.HintSize="638,1963.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="s:String[]" Name="arrChildren" />
-                </Sequence.Variables>
+              <Sequence DisplayName="Build DataTable" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_65">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="604,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Get next certificate from SPOL&quot;]" />
-                <Sequence sap:VirtualizedContainerService.HintSize="604,1728" sap2010:WorkflowViewState.IdRef="Sequence_46">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
-                    <Variable x:TypeArguments="x:String" Name="SiteID" />
-                    <Variable x:TypeArguments="x:String" Name="ListID" />
-                    <Variable x:TypeArguments="sd:DataTable" Name="dtResponse" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:RetryScope DisplayName="Retry Scope - Get SPOL IDs and Folder Contents" sap:VirtualizedContainerService.HintSize="570,488" sap2010:WorkflowViewState.IdRef="RetryScope_8">
-                    <ui:RetryScope.ActivityBody>
-                      <ActivityAction>
-                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,278.4" sap2010:WorkflowViewState.IdRef="Sequence_61">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_7" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </da:Get_Bearer_Token>
-                          <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Site_ID_1" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ds:Get_Site_ID>
-                          <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_List_ID_1" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ds:Get_List_ID>
-                          <ds:Get_Folder_Contents out_strResponse="{x:Null}" DisplayName="Get Folder Contents" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_Folder_Contents_1" in_strBearerToken="[BearerToken]" in_strFolderPath="FES/BCP/Blank Documents/Robot/Catch Certificates" in_strListID="[ListID]" in_strSiteID="[SiteID]" out_dtContents="[dtResponse]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ds:Get_Folder_Contents>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:RetryScope.ActivityBody>
-                    <ui:RetryScope.Condition>
-                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                    </ui:RetryScope.Condition>
-                  </ui:RetryScope>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtResponse]" DisplayName="For Each Row in Data Table - Response" sap:VirtualizedContainerService.HintSize="570,848" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                    <ui:ForEachRow.Body>
-                      <ActivityAction x:TypeArguments="sd:DataRow">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,649.6" sap2010:WorkflowViewState.IdRef="Sequence_49">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[CurrentRow(0).tostring.contains(&quot;CatchCertificate&quot;)]" DisplayName="If child contains (&quot;Catch Certicficate&quot;)" sap:VirtualizedContainerService.HintSize="502,589.6" sap2010:WorkflowViewState.IdRef="If_14">
-                            <If.Then>
-                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,336.8" sap2010:WorkflowViewState.IdRef="Sequence_47">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign Certificate File Name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_35">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[strCertificate]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[CurrentRow(0).tostring]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <Assign DisplayName="Assign Document Number" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_36">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[strDocumentNumber]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[strCertificate.replace("CatchCertificate-","")]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <ui:Break sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Break_2" />
-                              </Sequence>
-                            </If.Then>
-                            <If.Else>
-                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,90.4" sap2010:WorkflowViewState.IdRef="Sequence_48">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Sequence>
-                            </If.Else>
-                          </If>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:ForEachRow.Body>
-                  </ui:ForEachRow>
-                  <ui:RetryScope DisplayName="Retry Scope - Download Certificate" sap:VirtualizedContainerService.HintSize="570,308.8" sap2010:WorkflowViewState.IdRef="RetryScope_9">
-                    <ui:RetryScope.ActivityBody>
-                      <ActivityAction>
-                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_62">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ds:Download_File DisplayName="Download File - Certificate" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Download_File_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSaveToFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strSiteID="[SiteID]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ds:Download_File>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:RetryScope.ActivityBody>
-                    <ui:RetryScope.Condition>
-                      <ActivityFunc x:TypeArguments="x:Boolean" />
-                    </ui:RetryScope.Condition>
-                  </ui:RetryScope>
-                </Sequence>
+                <ui:BuildDataTable DataTable="[datUpdate]" DisplayName="Build Data Table - Update Info" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Document_x0020_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Advisor_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Email&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                <Assign DisplayName="Set DocumentList" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_40">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strDocumentList]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
               </Sequence>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">185,345</av:Point>
+                      <av:Point x:Key="ShapeLocation">185,445</av:Point>
                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">240,415 240,465</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">240,515 240,565</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Update Allocations Spreadsheet" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence DisplayName="Sharepoint - Get Next Certificate &amp; Download " sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
-                      <Variable x:TypeArguments="sd:DataTable" Name="datUpdate" />
-                      <Variable x:TypeArguments="x:Int32" Name="intLast" />
+                      <Variable x:TypeArguments="s:String[]" Name="arrChildren" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="714,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Update allocation&quot;]" />
-                    <ui:BuildDataTable DataTable="[datUpdate]" DisplayName="Build Data Table - Update Info" sap:VirtualizedContainerService.HintSize="714,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Document_x0020_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Advisor_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Exporter_x0020_Email&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{strDocumentNumber,&quot;Blanko&quot;,&quot;&quot;,system.text.RegularExpressions.Regex.Matches(g_TransactionItem(&quot;BodyPreview&quot;).ToString,&quot;(?&lt;=Email:).*(?=\n)&quot;)(0).ToString.Trim}]" DataTable="[datUpdate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="714,222" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                    <If Condition="[Cbool(g_Config(&quot;Pausepoint 1&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 1 is Enabled" sap:VirtualizedContainerService.HintSize="714,3014.4" sap2010:WorkflowViewState.IdRef="If_5">
-                      <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="680,1813.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="646,1753.2" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2" ProcessMode="ReuseIfExists" ShowExcelWindow="True">
-                            <ueab:ExcelProcessScopeX.Body>
-                              <ActivityAction x:TypeArguments="ui:IExcelProcess">
-                                <ActivityAction.Argument>
-                                  <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
-                                </ActivityAction.Argument>
-                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="612,1643.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Document Allocations" sap:VirtualizedContainerService.HintSize="578,1583.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[(g_config(&quot;Excel - File Location&quot;.ToString)).tostring]">
-                                    <ueab:ExcelApplicationCard.Body>
-                                      <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,1282" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="510,456.4" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="6" RetryInterval="00:00:01">
-                                            <ui:RetryScope.ActivityBody>
-                                              <ActivityAction>
-                                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,246.8" sap2010:WorkflowViewState.IdRef="Sequence_44">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <ueab:WriteRangeX Append="True" Destination="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" DisplayName="Write DataTable to Excel - Update Information" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="434,186.8" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False" Source="[datUpdate]" />
-                                                </Sequence>
-                                              </ActivityAction>
-                                            </ui:RetryScope.ActivityBody>
-                                            <ui:RetryScope.Condition>
-                                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                                            </ui:RetryScope.Condition>
-                                          </ui:RetryScope>
-                                          <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="510,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Stop">
-                                            <InvokeMethod.TargetObject>
-                                              <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                            </InvokeMethod.TargetObject>
-                                          </InvokeMethod>
-                                          <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 1" sap:VirtualizedContainerService.HintSize="510,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="[&quot;Please check that the robot has input the following information correctly:&lt;br&gt;&lt;br&gt;&lt;b&gt;Document ID:&lt;/b&gt; &quot;+strDocumentNumber+&quot;&lt;br&gt;&lt;b&gt;Advisor Name:&lt;/b&gt; Blanko&lt;br&gt;&lt;b&gt;Exporter Email:&lt;/b&gt; &quot;+system.text.RegularExpressions.Regex.Matches(g_TransactionItem(&quot;BodyPreview&quot;).ToString,&quot;(?&lt;=Email:).*(?=\n)&quot;)(0).ToString.Trim+&quot;&lt;br&gt;&lt;br&gt;Please press 'Continue' if the information has been input correctly. If any errors are present please record these on your observations sheet.&quot;]" IN_PopupTitle="Document Allocations Spreadsheet Check" IN_WidthHeight="[{500,400}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_1" />
-                                          <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="510,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Start">
-                                            <InvokeMethod.TargetObject>
-                                              <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                            </InvokeMethod.TargetObject>
-                                          </InvokeMethod>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ueab:ExcelApplicationCard.Body>
-                                  </ueab:ExcelApplicationCard>
-                                </Sequence>
-                              </ActivityAction>
-                            </ueab:ExcelProcessScopeX.Body>
-                          </ueab:ExcelProcessScopeX>
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="680,1038.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="646,978.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
-                            <ueab:ExcelProcessScopeX.Body>
-                              <ActivityAction x:TypeArguments="ui:IExcelProcess">
-                                <ActivityAction.Argument>
-                                  <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
-                                </ActivityAction.Argument>
-                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="612,868.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Document Allocations" sap:VirtualizedContainerService.HintSize="578,808.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[(g_config(&quot;Excel - File Location&quot;.ToString)).tostring]">
-                                    <ueab:ExcelApplicationCard.Body>
-                                      <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,507.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="510,447.6" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="6" RetryInterval="00:00:01">
-                                            <ui:RetryScope.ActivityBody>
-                                              <ActivityAction>
-                                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,246.8" sap2010:WorkflowViewState.IdRef="Sequence_45">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <ueab:WriteRangeX Append="True" Destination="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" DisplayName="Write DataTable to Excel - Update Information" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="434,186.8" sap2010:WorkflowViewState.IdRef="WriteRangeX_3" IgnoreEmptySource="False" Source="[datUpdate]" />
-                                                </Sequence>
-                                              </ActivityAction>
-                                            </ui:RetryScope.ActivityBody>
-                                            <ui:RetryScope.Condition>
-                                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                                            </ui:RetryScope.Condition>
-                                          </ui:RetryScope>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ueab:ExcelApplicationCard.Body>
-                                  </ueab:ExcelApplicationCard>
-                                </Sequence>
-                              </ActivityAction>
-                            </ueab:ExcelProcessScopeX.Body>
-                          </ueab:ExcelProcessScopeX>
-                        </Sequence>
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="604,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Get next certificate from SPOL&quot;]" />
+                    <Sequence sap:VirtualizedContainerService.HintSize="604,1728" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
+                        <Variable x:TypeArguments="x:String" Name="SiteID" />
+                        <Variable x:TypeArguments="x:String" Name="ListID" />
+                        <Variable x:TypeArguments="sd:DataTable" Name="dtResponse" />
+                      </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">185,465</av:Point>
-                          <av:Size x:Key="ShapeSize">110,70</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">240,535 240,565 270,565 270,610</av:PointCollection>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <ui:RetryScope DisplayName="Retry Scope - Get SPOL IDs and Folder Contents" sap:VirtualizedContainerService.HintSize="570,488" sap2010:WorkflowViewState.IdRef="RetryScope_8">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,278.4" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_7" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </da:Get_Bearer_Token>
+                              <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Site_ID_1" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ds:Get_Site_ID>
+                              <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_List_ID_1" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ds:Get_List_ID>
+                              <ds:Get_Folder_Contents out_strResponse="{x:Null}" DisplayName="Get Folder Contents" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_Folder_Contents_1" in_strBearerToken="[BearerToken]" in_strFolderPath="FES/BCP/Blank Documents/Robot/Catch Certificates" in_strListID="[ListID]" in_strSiteID="[SiteID]" out_dtContents="[dtResponse]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ds:Get_Folder_Contents>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean" />
+                        </ui:RetryScope.Condition>
+                      </ui:RetryScope>
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtResponse]" DisplayName="For Each Row in Data Table - Response" sap:VirtualizedContainerService.HintSize="570,848" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                        <ui:ForEachRow.Body>
+                          <ActivityAction x:TypeArguments="sd:DataRow">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="536,649.6" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If Condition="[CurrentRow(0).tostring.contains(&quot;CatchCertificate&quot;)]" DisplayName="If child contains (&quot;Catch Certicficate&quot;)" sap:VirtualizedContainerService.HintSize="502,589.6" sap2010:WorkflowViewState.IdRef="If_14">
+                                <If.Then>
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,336.8" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Assign Certificate File Name" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_35">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[strCertificate]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[CurrentRow(0).tostring]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="Assign Document Number" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_36">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[strDocumentNumber]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[strCertificate.replace("CatchCertificate-","")]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:Break sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Break_2" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,90.4" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEachRow.Body>
+                      </ui:ForEachRow>
+                      <ui:RetryScope DisplayName="Retry Scope - Download Certificate" sap:VirtualizedContainerService.HintSize="570,308.8" sap2010:WorkflowViewState.IdRef="RetryScope_9">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ds:Download_File DisplayName="Download File - Certificate" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Download_File_1" in_SPOLFilePath="[&quot;FES/BCP/Blank Documents/Robot/Catch Certificates/&quot;+strCertificate]" in_strBearerToken="[BearerToken]" in_strListID="[ListID]" in_strSaveToFilePath="[g_Config(&quot;Folder Path - Working Folder&quot;).ToString+&quot;/&quot;+strCertificate]" in_strSiteID="[SiteID]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ds:Download_File>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean" />
+                        </ui:RetryScope.Condition>
+                      </ui:RetryScope>
+                    </Sequence>
+                  </Sequence>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">185,565</av:Point>
+                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">240,635 240,685</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Add DataRow" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_13">
                         <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="ResponseContent" />
-                          <Variable x:TypeArguments="x:Int32" Name="ResponseStatus" />
+                          <Variable x:TypeArguments="x:Int32" Name="intLast" />
                         </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,174.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Move certificate&quot;]" />
-                        <Sequence sap:VirtualizedContainerService.HintSize="492,1590" sap2010:WorkflowViewState.IdRef="Sequence_50">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
-                            <Variable x:TypeArguments="x:String" Name="SiteID" />
-                            <Variable x:TypeArguments="x:String" Name="ListID" />
-                            <Variable x:TypeArguments="sd:DataTable" Name="dtResponse" />
-                            <Variable x:TypeArguments="x:String" Name="strCertificateEncoded" />
-                            <Variable x:TypeArguments="njl:JObject" Name="jsonObject" />
-                            <Variable x:TypeArguments="x:String" Name="strFileID" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:RetryScope DisplayName="Retry Scope - Get SPOL List ID" sap:VirtualizedContainerService.HintSize="458,430.4" sap2010:WorkflowViewState.IdRef="RetryScope_10">
-                            <ui:RetryScope.ActivityBody>
-                              <ActivityAction>
-                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,221.6" sap2010:WorkflowViewState.IdRef="Sequence_63">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_2" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </da:Get_Bearer_Token>
-                                  <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Site_ID_3" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ds:Get_Site_ID>
-                                  <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_List_ID_2" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ds:Get_List_ID>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:RetryScope.ActivityBody>
-                            <ui:RetryScope.Condition>
-                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                            </ui:RetryScope.Condition>
-                          </ui:RetryScope>
-                          <Assign DisplayName="Assign URi data string" sap:VirtualizedContainerService.HintSize="458,114" sap2010:WorkflowViewState.IdRef="Assign_37">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[strCertificateEncoded]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">[System.Uri.EscapeDataString(strCertificate)]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <ui:RetryScope DisplayName="Retry Scope - Get File ID" sap:VirtualizedContainerService.HintSize="458,362.8" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="5" RetryInterval="00:00:01">
-                            <ui:RetryScope.ActivityBody>
-                              <ActivityAction>
-                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,154" sap2010:WorkflowViewState.IdRef="Sequence_56">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request - Get File ID" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/root:/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificateEncoded.replace(&quot; &quot;,&quot;%20&quot;)]" sap:VirtualizedContainerService.HintSize="382,94" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
-                                    <ui:HttpClient.Attachments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Attachments>
-                                    <ui:HttpClient.Cookies>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Cookies>
-                                    <ui:HttpClient.Headers>
-                                      <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; (New System.Net.NetworkCredential("", BearerToken)).Password]</InArgument>
-                                    </ui:HttpClient.Headers>
-                                    <ui:HttpClient.Parameters>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Parameters>
-                                    <ui:HttpClient.UrlSegments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.UrlSegments>
-                                  </ui:HttpClient>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:RetryScope.ActivityBody>
-                            <ui:RetryScope.Condition>
-                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                            </ui:RetryScope.Condition>
-                          </ui:RetryScope>
-                          <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="458,122.8" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[ResponseContent]" />
-                          <Assign DisplayName="Assign File ID" sap:VirtualizedContainerService.HintSize="458,114" sap2010:WorkflowViewState.IdRef="Assign_38">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[strFileID]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">[jsonObject("id").ToString]</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                          <ui:RetryScope DisplayName="Retry Scope - Move SPOL File" sap:VirtualizedContainerService.HintSize="458,354" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="5" RetryInterval="00:00:01">
-                            <ui:RetryScope.ActivityBody>
-                              <ActivityAction>
-                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,154" sap2010:WorkflowViewState.IdRef="Sequence_57">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&#xA;  &quot;&quot;parentReference&quot;&quot;: {&#xA;    &quot;&quot;id&quot;&quot;: &quot;&quot;015E3YKJKT7YBWXNSPYRBKHA7KOQ5C6M5E&quot;&quot;&#xA;  }&#xA;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - Move File" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/items/&quot;+strFileID]" sap:VirtualizedContainerService.HintSize="382,94" sap2010:WorkflowViewState.IdRef="HttpClient_5" Method="PATCH" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
-                                    <ui:HttpClient.Attachments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Attachments>
-                                    <ui:HttpClient.Cookies>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Cookies>
-                                    <ui:HttpClient.Headers>
-                                      <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; (New System.Net.NetworkCredential("", BearerToken)).Password]</InArgument>
-                                    </ui:HttpClient.Headers>
-                                    <ui:HttpClient.Parameters>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Parameters>
-                                    <ui:HttpClient.UrlSegments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.UrlSegments>
-                                  </ui:HttpClient>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:RetryScope.ActivityBody>
-                            <ui:RetryScope.Condition>
-                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                            </ui:RetryScope.Condition>
-                          </ui:RetryScope>
-                        </Sequence>
-                        <Assign DisplayName="Add 1 to CertificateCounter" sap:VirtualizedContainerService.HintSize="492,105.2" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Adding row to datatable&quot;]" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{strDocumentNumber,&quot;Blanko&quot;,&quot;&quot;,system.text.RegularExpressions.Regex.Matches(g_TransactionItem(&quot;BodyPreview&quot;).ToString,&quot;(?&lt;=Email:).*(?=\n)&quot;)(0).ToString.Trim}]" DataTable="[datUpdate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,222" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        <Assign DisplayName="Add to Document List" sap:VirtualizedContainerService.HintSize="434,105.6" sap2010:WorkflowViewState.IdRef="Assign_41">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Int32">[intCertificateCounter]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[strDocumentList]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:Int32">[intCertificateCounter+1]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[strDocumentList+strDocumentNumber+"&lt;br&gt;"]</InArgument>
                           </Assign.Value>
                         </Assign>
                       </Sequence>
                       <FlowStep.Next>
-                        <FlowDecision x:Name="__ReferenceID5" Condition="[intCertificateCounter &gt;= intNoRequested]" DisplayName="More Certificates Need?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                        <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <av:Point x:Key="ShapeLocation">240,610</av:Point>
-                              <av:Size x:Key="ShapeSize">60,60</av:Size>
-                              <av:PointCollection x:Key="TrueConnector">240,640 120,640</av:PointCollection>
-                              <av:PointCollection x:Key="FalseConnector">300,640 330,640 330,260 295,260</av:PointCollection>
+                              <av:Point x:Key="ShapeLocation">185,685</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">240,755 240,830</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <FlowDecision.True>
-                            <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                          <Sequence DisplayName="Sharepoint - Move Certificate" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="ResponseContent" />
+                              <Variable x:TypeArguments="x:Int32" Name="ResponseStatus" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Move certificate&quot;]" />
+                            <Sequence sap:VirtualizedContainerService.HintSize="492,1594.4" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
+                                <Variable x:TypeArguments="x:String" Name="SiteID" />
+                                <Variable x:TypeArguments="x:String" Name="ListID" />
+                                <Variable x:TypeArguments="sd:DataTable" Name="dtResponse" />
+                                <Variable x:TypeArguments="x:String" Name="strCertificateEncoded" />
+                                <Variable x:TypeArguments="njl:JObject" Name="jsonObject" />
+                                <Variable x:TypeArguments="x:String" Name="strFileID" />
+                              </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">10,605</av:Point>
-                                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="x:String" Name="strRecipient" />
-                                  <Variable x:TypeArguments="x:String" Name="strBody" />
-                                </Sequence.Variables>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="594,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Send email&quot;]" />
-                                <Assign DisplayName="Assign Recipient" sap:VirtualizedContainerService.HintSize="594,114.4" sap2010:WorkflowViewState.IdRef="Assign_32">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[system.text.RegularExpressions.Regex.Matches(g_TransactionItem("BodyPreview").ToString,"(?&lt;=Email:).*(?=\n)")(0).ToString.Trim]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <Assign DisplayName="Remove Extra" sap:VirtualizedContainerService.HintSize="594,114.4" sap2010:WorkflowViewState.IdRef="Assign_39">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[system.text.regularexpressions.regex.replace(strRecipient,"&lt;.*&gt;","").ToString.Trim]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <Assign DisplayName="Assign Body" sap:VirtualizedContainerService.HintSize="594,114.4" sap2010:WorkflowViewState.IdRef="Assign_33">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt; &lt;html lang=""en""&gt; &lt;head&gt; &lt;meta charset=""UTF-8""&gt; &lt;body style=""font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #000;""&gt; &lt;p&gt;Thank you for your request.&lt;/p&gt; &lt;p&gt; Please find attached a blank document. Once completed, please return to us by attaching it in a reply to this email &lt;span style=""color: #d4351c;""&gt;and amending the subject line to Completed Catch Certificate.&lt;/span&gt; &lt;/p&gt; &lt;p&gt; Once we receive your completed document it will be validated and returned to you by email. Please ensure the document is completed fully or we will not be able to validate it. As the Fish Exports Service is currently unavailable, documents will not transfer automatically to EU Catch. Once validated, please share the document directly with your importer. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Please Note:&lt;/strong&gt;&lt;/p&gt;  &lt;table border=""1"" cellpadding=""8"" cellspacing=""0"" style=""border-collapse: collapse; width: 100%; font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #000;""&gt; &lt;tr&gt; &lt;td&gt; You may be liable to investigation and enforcement action, including prosecution, if you knowingly submit false, misleading, or otherwise inaccurate data. &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt; &lt;p&gt;By submitting this catch certificate, you confirm that:&lt;/p&gt; &lt;ul style=""margin-top: 0;""&gt; &lt;li&gt;you understand that you are under a duty not to knowingly submit information that is false or otherwise inaccurate&lt;/li&gt; &lt;li&gt;the fisheries administrations may undertake checks on the accuracy and validity of the data, cross-reference it with data held and submitted by others in the supply chain, and exchange data with other relevant fisheries administrations, including those in the country of export&lt;/li&gt; &lt;li&gt;you understand that you may be liable to investigation and potentially to enforcement action, including prosecution, if you knowingly submit false, misleading, or otherwise inaccurate data&lt;/li&gt; &lt;/ul&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;p&gt; For guidance on fish species please see: &lt;a href=""http://www.fao.org/fishery/collection/asfis/en""&gt; http://www.fao.org/fishery/collection/asfis/en &lt;/a&gt;. To see a list of licensed fishing vessels please see: &lt;a href=""https://www.gov.uk/government/collections/uk-vessel-lists""&gt; https://www.gov.uk/government/collections/uk-vessel-lists &lt;/a&gt;. &lt;/p&gt; &lt;p&gt;The mandatory fields you must complete are as follows:&lt;/p&gt; &lt;p&gt; Section 2: fishing vessel name, call sign/PLN, fishing licence number, fishing gear&lt;br&gt; Section 3: species, product code, catch area(s), net catch weight in kg&lt;br&gt; Section 5: Name and signature of the master of the vessel&lt;br&gt; Section 8: Name of exporter and date of acceptance&lt;br&gt; Annex 1: exporter name and address &lt;/p&gt; &lt;p&gt; Use &lt;a href=""https://www.gov.uk/guidance/temporary-fish-exports-guidance""&gt; https://www.gov.uk/guidance/temporary-fish-exports-guidance &lt;/a&gt; for additional information. &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;"]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <If Condition="[intNoRequested&gt;1]" DisplayName="If multiple requested:" sap:VirtualizedContainerService.HintSize="594,3359.2" sap2010:WorkflowViewState.IdRef="If_9">
-                                  <If.Then>
-                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="560,1627.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                      <Sequence.Variables>
-                                        <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
-                                      </Sequence.Variables>
+                              <ui:RetryScope DisplayName="Retry Scope - Get SPOL List ID" sap:VirtualizedContainerService.HintSize="458,431.2" sap2010:WorkflowViewState.IdRef="RetryScope_10">
+                                <ui:RetryScope.ActivityBody>
+                                  <ActivityAction>
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,221.6" sap2010:WorkflowViewState.IdRef="Sequence_63">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:RetryScope DisplayName="Retry Scope - send partial success email" sap:VirtualizedContainerService.HintSize="510,488.8" sap2010:WorkflowViewState.IdRef="RetryScope_6">
-                                        <ui:RetryScope.ActivityBody>
-                                          <ActivityAction>
-                                            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,279.2" sap2010:WorkflowViewState.IdRef="Sequence_59">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="434,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_9" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </da:Get_Bearer_Token>
-                                              <Assign DisplayName="Replace text with multiple text" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_34">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[strBody.replace("Please find attached a blank document","Please find attached "+intNoRequested.tostring+" blank documents")]</InArgument>
-                                                </Assign.Value>
-                                              </Assign>
-                                              <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Partial Successs" sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Send_Email_1" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </de:Send_Email>
-                                            </Sequence>
-                                          </ActivityAction>
-                                        </ui:RetryScope.ActivityBody>
-                                        <ui:RetryScope.Condition>
-                                          <ActivityFunc x:TypeArguments="x:Boolean" />
-                                        </ui:RetryScope.Condition>
-                                      </ui:RetryScope>
-                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="510,1078.4" sap2010:WorkflowViewState.IdRef="If_11">
-                                        <If.Then>
-                                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                                            <Sequence.Variables>
-                                              <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Messages" />
-                                            </Sequence.Variables>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
-                                              <InvokeMethod.TargetObject>
-                                                <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                              </InvokeMethod.TargetObject>
-                                            </InvokeMethod>
-                                            <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 2" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="Please review the content of the sent email. &lt;br&gt;&lt;br&gt; Please press 'Continue' if the email is correct. If any errors are present please record these on your observations sheet." IN_PopupTitle="Email Check" IN_WidthHeight="[{500,300}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_2" />
-                                            <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
-                                              <InvokeMethod.TargetObject>
-                                                <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                              </InvokeMethod.TargetObject>
-                                            </InvokeMethod>
-                                          </Sequence>
-                                        </If.Then>
-                                        <If.Else>
-                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_35">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
+                                      <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_2" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </da:Get_Bearer_Token>
+                                      <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Site_ID_3" in_strBearerToken="[BearerToken]" in_strSite="sites/Community1421" in_strTenancy="defra.sharepoint.com" out_strSiteID="[SiteID]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ds:Get_Site_ID>
+                                      <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Get_List_ID_2" in_strBearerToken="[BearerToken]" in_strListDisplayName="Projects" in_strSiteID="[SiteID]" out_strListID="[ListID]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ds:Get_List_ID>
                                     </Sequence>
-                                  </If.Then>
-                                  <If.Else>
-                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="560,1569.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                  </ActivityAction>
+                                </ui:RetryScope.ActivityBody>
+                                <ui:RetryScope.Condition>
+                                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                                </ui:RetryScope.Condition>
+                              </ui:RetryScope>
+                              <Assign DisplayName="Assign URi data string" sap:VirtualizedContainerService.HintSize="458,114.4" sap2010:WorkflowViewState.IdRef="Assign_37">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strCertificateEncoded]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[System.Uri.EscapeDataString(strCertificate)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:RetryScope DisplayName="Retry Scope - Get File ID" sap:VirtualizedContainerService.HintSize="458,364" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="5" RetryInterval="00:00:01">
+                                <ui:RetryScope.ActivityBody>
+                                  <ActivityAction>
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,154.4" sap2010:WorkflowViewState.IdRef="Sequence_56">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="526,1509.6" sap2010:WorkflowViewState.IdRef="If_12">
-                                        <If.Then>
-                                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="492,1256.8" sap2010:WorkflowViewState.IdRef="Sequence_36">
-                                            <Sequence.Variables>
-                                              <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Messages" />
-                                              <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
-                                            </Sequence.Variables>
+                                      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request - Get File ID" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/root:/FES/BCP/Blank%20Documents/Robot/Catch%20Certificates/&quot;+strCertificateEncoded.replace(&quot; &quot;,&quot;%20&quot;)]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
+                                        <ui:HttpClient.Attachments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Attachments>
+                                        <ui:HttpClient.Cookies>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Cookies>
+                                        <ui:HttpClient.Headers>
+                                          <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; (New System.Net.NetworkCredential("", BearerToken)).Password]</InArgument>
+                                        </ui:HttpClient.Headers>
+                                        <ui:HttpClient.Parameters>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Parameters>
+                                        <ui:HttpClient.UrlSegments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.UrlSegments>
+                                      </ui:HttpClient>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:RetryScope.ActivityBody>
+                                <ui:RetryScope.Condition>
+                                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                                </ui:RetryScope.Condition>
+                              </ui:RetryScope>
+                              <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="458,123.2" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[ResponseContent]" />
+                              <Assign DisplayName="Assign File ID" sap:VirtualizedContainerService.HintSize="458,114.4" sap2010:WorkflowViewState.IdRef="Assign_38">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strFileID]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[jsonObject("id").ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:RetryScope DisplayName="Retry Scope - Move SPOL File" sap:VirtualizedContainerService.HintSize="458,355.2" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="5" RetryInterval="00:00:01">
+                                <ui:RetryScope.ActivityBody>
+                                  <ActivityAction>
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,154.4" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&#xA;  &quot;&quot;parentReference&quot;&quot;: {&#xA;    &quot;&quot;id&quot;&quot;: &quot;&quot;015E3YKJKT7YBWXNSPYRBKHA7KOQ5C6M5E&quot;&quot;&#xA;  }&#xA;}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - Move File" EnableSSLVerification="True" EndPoint="[&quot;https://graph.microsoft.com/v1.0/drives/b!9cIQmhss8EaW4oEeYqtzdE-QZDmFX4RBvfy74GLeWmnOqZNV1pZwTr9NSVZ3Bv-M/items/&quot;+strFileID]" sap:VirtualizedContainerService.HintSize="382,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_5" Method="PATCH" Result="[ResponseContent]" StatusCode="[ResponseStatus]" TimeoutMS="6000">
+                                        <ui:HttpClient.Attachments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Attachments>
+                                        <ui:HttpClient.Cookies>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Cookies>
+                                        <ui:HttpClient.Headers>
+                                          <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; (New System.Net.NetworkCredential("", BearerToken)).Password]</InArgument>
+                                        </ui:HttpClient.Headers>
+                                        <ui:HttpClient.Parameters>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Parameters>
+                                        <ui:HttpClient.UrlSegments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.UrlSegments>
+                                      </ui:HttpClient>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:RetryScope.ActivityBody>
+                                <ui:RetryScope.Condition>
+                                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                                </ui:RetryScope.Condition>
+                              </ui:RetryScope>
+                            </Sequence>
+                            <Assign DisplayName="Add 1 to CertificateCounter" sap:VirtualizedContainerService.HintSize="492,105.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[intCertificateCounter]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[intCertificateCounter+1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                          <FlowStep.Next>
+                            <FlowDecision x:Name="__ReferenceID5" Condition="[intCertificateCounter &gt;= intNoRequested]" DisplayName="More Certificates Need?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <av:Point x:Key="ShapeLocation">210,830</av:Point>
+                                  <av:Size x:Key="ShapeSize">60,60</av:Size>
+                                  <av:PointCollection x:Key="TrueConnector">210,860 125,860</av:PointCollection>
+                                  <av:PointCollection x:Key="FalseConnector">270,860 345.6,860 345.6,480 295,480</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <FlowDecision.True>
+                                <FlowStep x:Name="__ReferenceID8">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">15,825</av:Point>
+                                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">70,895 70,945</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence DisplayName="Update Allocations Spreadsheet" sap:VirtualizedContainerService.HintSize="716,7339" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:Int32" Name="intLast" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="682,175" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Update allocation&quot;]" />
+                                    <If Condition="[Cbool(g_Config(&quot;Pausepoint 1&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 1 is Enabled" sap:VirtualizedContainerService.HintSize="682,4707" sap2010:WorkflowViewState.IdRef="If_15">
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="680,2846" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" FileConflictResolution="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope" ExistingProcessAction="ForceKill" sap:VirtualizedContainerService.HintSize="646,2786" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3" LaunchMethod="Application" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
+                                            <ueab:ExcelProcessScopeX.Body>
+                                              <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="612,2676" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="578,175" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Pausepoint 1 Route&quot;]" />
+                                                  <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Document Allocations" sap:VirtualizedContainerService.HintSize="578,2441" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[(g_config(&quot;Excel - File Location&quot;.ToString)).tostring]">
+                                                    <ueab:ExcelApplicationCard.Body>
+                                                      <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                                        <ActivityAction.Argument>
+                                                          <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                                        </ActivityAction.Argument>
+                                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,2145" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="510,1323" sap2010:WorkflowViewState.IdRef="RetryScope_12" NumberOfRetries="6" RetryInterval="00:00:01">
+                                                            <ui:RetryScope.ActivityBody>
+                                                              <ActivityAction>
+                                                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,1114" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                                                                  <Sequence.Variables>
+                                                                    <Variable x:TypeArguments="x:Int32" Name="LastRow" />
+                                                                  </Sequence.Variables>
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;PP1 - Getting last row&quot;]" />
+                                                                  <ueab:FindFirstLastDataRowX FirstRowIndex="{x:Null}" BlankRowsToSkip="1" ColumnName="Document ID" ConfigureLastRowAs="LastPopulatedRow" DisplayName="Find First/Last Data Row" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="434,345" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_2" LastRowIndex="[LastRow]" LastRowOffset="0" Range="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" VisibleRowsOnly="False" />
+                                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;PP1: Last row found&quot;]" />
+                                                                  <ueab:WriteRangeX Destination="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).ToString).Range(&quot;A&quot;+((LastRow+1).tostring))]" DisplayName="Write DataTable to Excel - Update Information" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="434,193" sap2010:WorkflowViewState.IdRef="WriteRangeX_4" IgnoreEmptySource="False" Source="[datUpdate]" />
+                                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;PP1; Row updated&quot;]" />
+                                                                </Sequence>
+                                                              </ActivityAction>
+                                                            </ui:RetryScope.ActivityBody>
+                                                            <ui:RetryScope.Condition>
+                                                              <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                            </ui:RetryScope.Condition>
+                                                          </ui:RetryScope>
+                                                          <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="510,168" sap2010:WorkflowViewState.IdRef="InvokeMethod_9" MethodName="Stop">
+                                                            <InvokeMethod.TargetObject>
+                                                              <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                            </InvokeMethod.TargetObject>
+                                                          </InvokeMethod>
+                                                          <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 1" sap:VirtualizedContainerService.HintSize="510,435" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="[&quot;Please check that the robot has input the following information correctly:&lt;br&gt;&lt;br&gt;&lt;b&gt;Document ID:&lt;/b&gt; &quot;+strDocumentList+&quot;&lt;br&gt;&lt;b&gt;Advisor Name:&lt;/b&gt; Blanko&lt;br&gt;&lt;b&gt;Exporter Email:&lt;/b&gt; &quot;+system.text.RegularExpressions.Regex.Matches(g_TransactionItem(&quot;BodyPreview&quot;).ToString,&quot;(?&lt;=Email:).*(?=\n)&quot;)(0).ToString.Trim+&quot;&lt;br&gt;&lt;br&gt;Please press 'Continue' if the information has been input correctly. If any errors are present please record these on your observations sheet.&quot;]" IN_PopupTitle="Document Allocations Spreadsheet Check" IN_WidthHeight="[{500,400}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_7" />
+                                                          <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="510,159" sap2010:WorkflowViewState.IdRef="InvokeMethod_10" MethodName="Start">
+                                                            <InvokeMethod.TargetObject>
+                                                              <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                            </InvokeMethod.TargetObject>
+                                                          </InvokeMethod>
+                                                        </Sequence>
+                                                      </ActivityAction>
+                                                    </ueab:ExcelApplicationCard.Body>
+                                                  </ueab:ExcelApplicationCard>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ueab:ExcelProcessScopeX.Body>
+                                          </ueab:ExcelProcessScopeX>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="680,1722" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process - Excel" sap:VirtualizedContainerService.HintSize="646,167" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="excel.exe" />
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="646,175" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Non pausepoint route&quot;]" />
+                                          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" FileConflictResolution="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope" ExistingProcessAction="ForceKill" sap:VirtualizedContainerService.HintSize="646,1320" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_4" LaunchMethod="Application" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
+                                            <ueab:ExcelProcessScopeX.Body>
+                                              <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="612,1210" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Document Allocations" sap:VirtualizedContainerService.HintSize="578,1150" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[(g_config(&quot;Excel - File Location&quot;.ToString)).tostring]">
+                                                    <ueab:ExcelApplicationCard.Body>
+                                                      <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                                        <ActivityAction.Argument>
+                                                          <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                                        </ActivityAction.Argument>
+                                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="544,854" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="510,794" sap2010:WorkflowViewState.IdRef="RetryScope_13" NumberOfRetries="6" RetryInterval="00:00:01">
+                                                            <ui:RetryScope.ActivityBody>
+                                                              <ActivityAction>
+                                                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,594" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Updating info&quot;]" />
+                                                                  <ueab:WriteRangeX Append="True" Destination="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" DisplayName="Write DataTable to Excel - Update Information" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="434,193" sap2010:WorkflowViewState.IdRef="WriteRangeX_5" IgnoreEmptySource="False" Source="[datUpdate]" />
+                                                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Row updated&quot;]" />
+                                                                </Sequence>
+                                                              </ActivityAction>
+                                                            </ui:RetryScope.ActivityBody>
+                                                            <ui:RetryScope.Condition>
+                                                              <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                            </ui:RetryScope.Condition>
+                                                          </ui:RetryScope>
+                                                        </Sequence>
+                                                      </ActivityAction>
+                                                    </ueab:ExcelApplicationCard.Body>
+                                                  </ueab:ExcelApplicationCard>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ueab:ExcelProcessScopeX.Body>
+                                          </ueab:ExcelProcessScopeX>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" FileConflictResolution="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope" ExistingProcessAction="ForceKill" sap:VirtualizedContainerService.HintSize="682,2397" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_5" LaunchMethod="Application" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
+                                      <ueab:ExcelProcessScopeX.Body>
+                                        <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                                          </ActivityAction.Argument>
+                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="648,2287" sap2010:WorkflowViewState.IdRef="Sequence_77">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:RetryScope DisplayName="Retry Scope - Send success email" sap:VirtualizedContainerService.HintSize="458,431.2" sap2010:WorkflowViewState.IdRef="RetryScope_7">
-                                              <ui:RetryScope.ActivityBody>
-                                                <ActivityAction>
-                                                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,221.6" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Document Allocations - Verify" sap:VirtualizedContainerService.HintSize="614,2227" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_5" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[(g_config(&quot;Excel - File Location&quot;.ToString)).tostring]">
+                                              <ueab:ExcelApplicationCard.Body>
+                                                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                                  </ActivityAction.Argument>
+                                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="580,1931" sap2010:WorkflowViewState.IdRef="Sequence_76">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,85.2" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_10" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </da:Get_Bearer_Token>
-                                                    <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Successs" sap:VirtualizedContainerService.HintSize="382,76.4" sap2010:WorkflowViewState.IdRef="Send_Email_5" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </de:Send_Email>
+                                                    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="546,1871" sap2010:WorkflowViewState.IdRef="RetryScope_14" NumberOfRetries="6" RetryInterval="00:00:01">
+                                                      <ui:RetryScope.ActivityBody>
+                                                        <ActivityAction>
+                                                          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="504,1671" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                                                            <Sequence.Variables>
+                                                              <Variable x:TypeArguments="x:Int32" Name="intLastRow" />
+                                                              <Variable x:TypeArguments="x:String" Name="strReadDocumentID" />
+                                                              <Variable x:TypeArguments="x:Int32" Name="intRows" />
+                                                            </Sequence.Variables>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="470,175" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Verifying update&quot;]" />
+                                                            <ueab:FindFirstLastDataRowX FirstRowIndex="{x:Null}" BlankRowsToSkip="1" ColumnName="Document ID" ConfigureLastRowAs="LastPopulatedRow" DisplayName="Find First/Last Data Row" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="470,345" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_3" LastRowIndex="[intLastRow]" LastRowOffset="0" Range="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" VisibleRowsOnly="False" />
+                                                            <ueab:ReadCellValueX Cell="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring).Cell(&quot;A&quot;+intLastRow.ToString)]" DisplayName="Read Cell Value" GetFormattedText="True" sap:VirtualizedContainerService.HintSize="470,193" sap2010:WorkflowViewState.IdRef="ReadCellValueX_1">
+                                                              <ueab:ReadCellValueX.SaveTo>
+                                                                <OutArgument x:TypeArguments="x:String">[strReadDocumentID]</OutArgument>
+                                                              </ueab:ReadCellValueX.SaveTo>
+                                                            </ueab:ReadCellValueX>
+                                                            <Assign DisplayName="Assign Row Counter" sap:VirtualizedContainerService.HintSize="470,175" sap2010:WorkflowViewState.IdRef="Assign_42">
+                                                              <Assign.To>
+                                                                <OutArgument x:TypeArguments="x:Int32">[intRows]</OutArgument>
+                                                              </Assign.To>
+                                                              <Assign.Value>
+                                                                <InArgument x:TypeArguments="x:Int32">[DatUpdate.rows.count-1]</InArgument>
+                                                              </Assign.Value>
+                                                            </Assign>
+                                                            <If Condition="[strReadDocumentID=datUpdate(intRows)(0).tostring]" DisplayName="If last row exists" sap:VirtualizedContainerService.HintSize="470,557" sap2010:WorkflowViewState.IdRef="If_16">
+                                                              <If.Then>
+                                                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,174.4" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Update Success" />
+                                                                </Sequence>
+                                                              </If.Then>
+                                                              <If.Else>
+                                                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,244" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <ueab:WriteRangeX Append="True" Destination="[Excel.Sheet(g_Config(&quot;Excel - Sheet Name&quot;).tostring)]" DisplayName="Write DataTable to Excel - Update Information" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="434,184" sap2010:WorkflowViewState.IdRef="WriteRangeX_6" IgnoreEmptySource="False" Source="[datUpdate]" />
+                                                                </Sequence>
+                                                              </If.Else>
+                                                            </If>
+                                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="470,166" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Update verified&quot;]" />
+                                                          </Sequence>
+                                                        </ActivityAction>
+                                                      </ui:RetryScope.ActivityBody>
+                                                      <ui:RetryScope.Condition>
+                                                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                      </ui:RetryScope.Condition>
+                                                    </ui:RetryScope>
                                                   </Sequence>
                                                 </ActivityAction>
-                                              </ui:RetryScope.ActivityBody>
-                                              <ui:RetryScope.Condition>
-                                                <ActivityFunc x:TypeArguments="x:Boolean" />
-                                              </ui:RetryScope.Condition>
-                                            </ui:RetryScope>
-                                            <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="458,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_7" MethodName="Stop">
-                                              <InvokeMethod.TargetObject>
-                                                <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                              </InvokeMethod.TargetObject>
-                                            </InvokeMethod>
-                                            <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 2" sap:VirtualizedContainerService.HintSize="458,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="Please the content of the sent email. &lt;br&gt;&lt;br&gt; Please press 'Continue' if the email is correct. If any errors are present please record these on your observations sheet." IN_PopupTitle="Email Check" IN_WidthHeight="[{500,300}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_6" />
-                                            <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="458,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_8" MethodName="Start">
-                                              <InvokeMethod.TargetObject>
-                                                <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
-                                              </InvokeMethod.TargetObject>
-                                            </InvokeMethod>
+                                              </ueab:ExcelApplicationCard.Body>
+                                            </ueab:ExcelApplicationCard>
                                           </Sequence>
-                                        </If.Then>
-                                        <If.Else>
-                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="492,90.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
-                                    </Sequence>
-                                  </If.Else>
-                                </If>
-                              </Sequence>
-                            </FlowStep>
-                          </FlowDecision.True>
-                          <FlowDecision.False>
-                            <x:Reference>__ReferenceID0</x:Reference>
-                          </FlowDecision.False>
-                        </FlowDecision>
+                                        </ActivityAction>
+                                      </ueab:ExcelProcessScopeX.Body>
+                                    </ueab:ExcelProcessScopeX>
+                                  </Sequence>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">15,945</av:Point>
+                                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="596,5549" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="strRecipient" />
+                                          <Variable x:TypeArguments="x:String" Name="strBody" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562,175" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Send email&quot;]" />
+                                        <Assign DisplayName="Assign Recipient" sap:VirtualizedContainerService.HintSize="562,175" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[system.text.RegularExpressions.Regex.Matches(g_TransactionItem("BodyPreview").ToString,"(?&lt;=Email:).*(?=\n)")(0).ToString.Trim]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign DisplayName="Remove Extra" sap:VirtualizedContainerService.HintSize="562,175" sap2010:WorkflowViewState.IdRef="Assign_39">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[strRecipient]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">[system.text.regularexpressions.regex.replace(strRecipient,"&lt;.*&gt;","").ToString.Trim]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign DisplayName="Assign Body" sap:VirtualizedContainerService.HintSize="562,175" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt; &lt;html lang=""en""&gt; &lt;head&gt; &lt;meta charset=""UTF-8""&gt; &lt;body style=""font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #000;""&gt; &lt;p&gt;Thank you for your request.&lt;/p&gt; &lt;p&gt; Please find attached a blank document. Once completed, please return to us by attaching it in a reply to this email &lt;span style=""color: #d4351c;""&gt;and amending the subject line to Completed Catch Certificate.&lt;/span&gt; &lt;/p&gt; &lt;p&gt; Once we receive your completed document it will be validated and returned to you by email. Please ensure the document is completed fully or we will not be able to validate it. As the Fish Exports Service is currently unavailable, documents will not transfer automatically to EU Catch. Once validated, please share the document directly with your importer. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;Please Note:&lt;/strong&gt;&lt;/p&gt;  &lt;table border=""1"" cellpadding=""8"" cellspacing=""0"" style=""border-collapse: collapse; width: 100%; font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #000;""&gt; &lt;tr&gt; &lt;td&gt; You may be liable to investigation and enforcement action, including prosecution, if you knowingly submit false, misleading, or otherwise inaccurate data. &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt; &lt;p&gt;By submitting this catch certificate, you confirm that:&lt;/p&gt; &lt;ul style=""margin-top: 0;""&gt; &lt;li&gt;you understand that you are under a duty not to knowingly submit information that is false or otherwise inaccurate&lt;/li&gt; &lt;li&gt;the fisheries administrations may undertake checks on the accuracy and validity of the data, cross-reference it with data held and submitted by others in the supply chain, and exchange data with other relevant fisheries administrations, including those in the country of export&lt;/li&gt; &lt;li&gt;you understand that you may be liable to investigation and potentially to enforcement action, including prosecution, if you knowingly submit false, misleading, or otherwise inaccurate data&lt;/li&gt; &lt;/ul&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;p&gt; For guidance on fish species please see: &lt;a href=""http://www.fao.org/fishery/collection/asfis/en""&gt; http://www.fao.org/fishery/collection/asfis/en &lt;/a&gt;. To see a list of licensed fishing vessels please see: &lt;a href=""https://www.gov.uk/government/collections/uk-vessel-lists""&gt; https://www.gov.uk/government/collections/uk-vessel-lists &lt;/a&gt;. &lt;/p&gt; &lt;p&gt;The mandatory fields you must complete are as follows:&lt;/p&gt; &lt;p&gt; Section 2: fishing vessel name, call sign/PLN, fishing licence number, fishing gear&lt;br&gt; Section 3: species, product code, catch area(s), net catch weight in kg&lt;br&gt; Section 5: Name and signature of the master of the vessel&lt;br&gt; Section 8: Name of exporter and date of acceptance&lt;br&gt; Annex 1: exporter name and address &lt;/p&gt; &lt;p&gt; Use &lt;a href=""https://www.gov.uk/guidance/temporary-fish-exports-guidance""&gt; https://www.gov.uk/guidance/temporary-fish-exports-guidance &lt;/a&gt; for additional information. &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;"]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <If Condition="[intNoRequested&gt;1]" DisplayName="If multiple requested:" sap:VirtualizedContainerService.HintSize="562,4789" sap2010:WorkflowViewState.IdRef="If_9">
+                                          <If.Then>
+                                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="560,2459.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                              <Sequence.Variables>
+                                                <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
+                                              </Sequence.Variables>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:RetryScope DisplayName="Retry Scope - send partial success email" sap:VirtualizedContainerService.HintSize="510,1321.2" sap2010:WorkflowViewState.IdRef="RetryScope_6">
+                                                <ui:RetryScope.ActivityBody>
+                                                  <ActivityAction>
+                                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="468,1111.6" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Multiple Requested&quot;]" />
+                                                      <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="434,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_9" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </da:Get_Bearer_Token>
+                                                      <Assign DisplayName="Replace text with multiple text" sap:VirtualizedContainerService.HintSize="434,114.4" sap2010:WorkflowViewState.IdRef="Assign_34">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">[strBody]</OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">[strBody.replace("Please find attached a blank document","Please find attached "+intNoRequested.tostring+" blank documents")]</InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                      <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Partial Successs" sap:VirtualizedContainerService.HintSize="434,481.2" sap2010:WorkflowViewState.IdRef="Send_Email_1" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </de:Send_Email>
+                                                    </Sequence>
+                                                  </ActivityAction>
+                                                </ui:RetryScope.ActivityBody>
+                                                <ui:RetryScope.Condition>
+                                                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                </ui:RetryScope.Condition>
+                                              </ui:RetryScope>
+                                              <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="510,1078.4" sap2010:WorkflowViewState.IdRef="If_11">
+                                                <If.Then>
+                                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,825.6" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                                    <Sequence.Variables>
+                                                      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Messages" />
+                                                    </Sequence.Variables>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="382,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Stop">
+                                                      <InvokeMethod.TargetObject>
+                                                        <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                      </InvokeMethod.TargetObject>
+                                                    </InvokeMethod>
+                                                    <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 2" sap:VirtualizedContainerService.HintSize="382,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="Please review the content of the sent email. &lt;br&gt;&lt;br&gt; Please press 'Continue' if the email is correct. If any errors are present please record these on your observations sheet." IN_PopupTitle="Email Check" IN_WidthHeight="[{500,300}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_2" />
+                                                    <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="382,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Start">
+                                                      <InvokeMethod.TargetObject>
+                                                        <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                      </InvokeMethod.TargetObject>
+                                                    </InvokeMethod>
+                                                  </Sequence>
+                                                </If.Then>
+                                                <If.Else>
+                                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                            </Sequence>
+                                          </If.Then>
+                                          <If.Else>
+                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="560,2199.2" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <If Condition="[Cbool(g_Config(&quot;Pausepoint 2&quot;))=TRUE and cBool(g_Config(&quot;Unattended&quot;))=FALSE]" DisplayName="If Pausepoint 2 is Enabled" sap:VirtualizedContainerService.HintSize="526,2139.2" sap2010:WorkflowViewState.IdRef="If_12">
+                                                <If.Then>
+                                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="492,1375.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                                    <Sequence.Variables>
+                                                      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="Messages" />
+                                                      <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
+                                                    </Sequence.Variables>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="458,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Single Requested - Attended&quot;]" />
+                                                    <ui:RetryScope DisplayName="Retry Scope - Send success email" sap:VirtualizedContainerService.HintSize="458,374.4" sap2010:WorkflowViewState.IdRef="RetryScope_7">
+                                                      <ui:RetryScope.ActivityBody>
+                                                        <ActivityAction>
+                                                          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,164.8" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_10" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </da:Get_Bearer_Token>
+                                                            <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Successs" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Send_Email_5" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </de:Send_Email>
+                                                          </Sequence>
+                                                        </ActivityAction>
+                                                      </ui:RetryScope.ActivityBody>
+                                                      <ui:RetryScope.Condition>
+                                                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                      </ui:RetryScope.Condition>
+                                                    </ui:RetryScope>
+                                                    <InvokeMethod DisplayName="Invoke Method - Stop" sap:VirtualizedContainerService.HintSize="458,168.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_7" MethodName="Stop">
+                                                      <InvokeMethod.TargetObject>
+                                                        <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                      </InvokeMethod.TargetObject>
+                                                    </InvokeMethod>
+                                                    <d:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Generic PopUp - Pausepoint 2" sap:VirtualizedContainerService.HintSize="458,437.6" IN_CSS_filepath="[&quot;/file://&quot; + Directory.GetCurrentDirectory + &quot;\Assets\Generic\PausePoint.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="Please the content of the sent email. &lt;br&gt;&lt;br&gt; Please press 'Continue' if the email is correct. If any errors are present please record these on your observations sheet." IN_PopupTitle="Email Check" IN_WidthHeight="[{500,300}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_6" />
+                                                    <InvokeMethod DisplayName="Invoke Method - Start" sap:VirtualizedContainerService.HintSize="458,159.6" sap2010:WorkflowViewState.IdRef="InvokeMethod_8" MethodName="Start">
+                                                      <InvokeMethod.TargetObject>
+                                                        <InArgument x:TypeArguments="sd1:Stopwatch">[g_swProcessingTimer]</InArgument>
+                                                      </InvokeMethod.TargetObject>
+                                                    </InvokeMethod>
+                                                  </Sequence>
+                                                </If.Then>
+                                                <If.Else>
+                                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="492,601.2" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:RetryScope DisplayName="Retry Scope - Send success email" sap:VirtualizedContainerService.HintSize="458,541.2" sap2010:WorkflowViewState.IdRef="RetryScope_11">
+                                                      <ui:RetryScope.ActivityBody>
+                                                        <ActivityAction>
+                                                          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,340.4" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                                                            <Sequence.Variables>
+                                                              <Variable x:TypeArguments="ss:SecureString" Name="BearerToken" />
+                                                            </Sequence.Variables>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Unattended sending route&quot;]" />
+                                                            <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_11" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </da:Get_Bearer_Token>
+                                                            <de:Send_Email in_strBcc="{x:Null}" in_strCc="{x:Null}" DisplayName="Send Email - Successs" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Send_Email_6" in_strAttachments="[String.Join(&quot;,&quot;, directory.getfiles(g_Config(&quot;Folder Path - Working Folder&quot;).ToString))]" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailBody="[strBody]" in_strSubject="[&quot;RE: &quot;+g_TransactionItem(&quot;Subject&quot;).ToString]" in_strToRecipients="[strRecipient]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </de:Send_Email>
+                                                          </Sequence>
+                                                        </ActivityAction>
+                                                      </ui:RetryScope.ActivityBody>
+                                                      <ui:RetryScope.Condition>
+                                                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                                                      </ui:RetryScope.Condition>
+                                                    </ui:RetryScope>
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                            </Sequence>
+                                          </If.Else>
+                                        </If>
+                                      </Sequence>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowDecision.True>
+                              <FlowDecision.False>
+                                <x:Reference>__ReferenceID0</x:Reference>
+                              </FlowDecision.False>
+                            </FlowDecision>
+                          </FlowStep.Next>
+                        </FlowStep>
                       </FlowStep.Next>
                     </FlowStep>
                   </FlowStep.Next>
@@ -1268,7 +1472,7 @@
             <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">625,225</av:Point>
+                  <av:Point x:Key="ShapeLocation">625,325</av:Point>
                   <av:Size x:Key="ShapeSize">110,70</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -1283,35 +1487,35 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="458,175.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Move email to General Enquiries&quot;]" />
-                <ui:RetryScope DisplayName="Retry Scope - Get Folder ID and move email to General Enquiries" sap:VirtualizedContainerService.HintSize="458,431.2" sap2010:WorkflowViewState.IdRef="RetryScope_5">
+                <ui:RetryScope DisplayName="Retry Scope - Get Folder ID and move email to General Enquiries" sap:VirtualizedContainerService.HintSize="458,1154.4" sap2010:WorkflowViewState.IdRef="RetryScope_5">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,221.6" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,944.8" sap2010:WorkflowViewState.IdRef="Sequence_58">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_8" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
+                        <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="382,280.4" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_8" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, g_credExchangeUsername)).SecurePassword]" in_strClientSecret="[g_credExchangePassword]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[BearerToken]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </da:Get_Bearer_Token>
-                        <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - General Enquiries" sap:VirtualizedContainerService.HintSize="382,56.8" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - General Enquiries&quot;).ToString]" out_strFolderID="[strFolderID]">
+                        <de:Get_Folder_ID DisplayName="Get Folder ID - Exchange - General Enquiries" sap:VirtualizedContainerService.HintSize="382,280.4" sap2010:WorkflowViewState.IdRef="Get_Folder_ID_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strFolderPath="[g_Config(&quot;Outlook - General Enquiries&quot;).ToString]" out_strFolderID="[strFolderID]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </de:Get_Folder_ID>
-                        <de:Move_Email out_strNEWEmailID="{x:Null}" DisplayName="Move Email - General Enquiries" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Move_Email_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[g_TransactionItem(0).ToString]" in_strNewFolderID="[strFolderID]">
+                        <de:Move_Email out_strNEWEmailID="{x:Null}" DisplayName="Move Email - General Enquiries" sap:VirtualizedContainerService.HintSize="382,324" sap2010:WorkflowViewState.IdRef="Move_Email_1" in_strBearerToken="[BearerToken]" in_strEmailAccount="[g_Config(&quot;Outlook - Account&quot;).ToString]" in_strEmailID="[g_TransactionItem(0).ToString]" in_strNewFolderID="[strFolderID]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -1344,5 +1548,7 @@
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
   </Flowchart>
 </Activity>
