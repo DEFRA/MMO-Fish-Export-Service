@@ -1,0 +1,24 @@
+Title,Reporting species,Possible variables
+Octopus,OCT,OCT;#EOI;#OCM
+Alfonsino North East Atlantic,ALF,ALF;#BYS;#
+Angler / Monkfish,ANF,ANF;#ANK;#MNZ#MON
+Wolffishes(=Catfishes) nei,CAA,CAA;#CAT
+Palinurid spiny lobsters nei,CRW,CRW;#LOQ;#SLO
+"Cuttlefish, bobtail squids nei",CTL,CTL;#CTC
+"Gurnards, searobins nei",GUX,GUX;#GUY
+Jack and horse mackerels nei,JAX,JAX;#HOM
+Megrim,LEZ,LEZ;#MEG
+Ling,LIN,LIN;#LNZ
+Mullets nei,MUL,MUL;#ODL
+Flat oysters nei,OYX,OYX;#OYF
+Solen razor clams nei,RAZ,RAZ;#SOI
+Red scorpionfish,RSE,RSE;#BBS
+"Porgies, seabreams nei",SBX,SBG;#SBX;#SBZ;#BRB
+Smooth-hound,SMD,SDV;#SMD
+Various sharks nei,SKH,SKH;#CCE;#CCF;#CCL;#NGB
+Common sole,SOL,SOL;#SOO;#SOX;#MKG
+Common squids nei,SQC,SQC;#SQI;#SQR;#SQS;#SQZ
+European flying squid,SQE,SQE;#TDQ
+"Catsharks, etc. nei",SYX,SYX;#SCL
+Thresher sharks nei,THR,THR;#ALV
+Weeverfishes nei,TRA,TRA;#WEX

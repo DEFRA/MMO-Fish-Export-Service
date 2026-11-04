@@ -1,0 +1,6 @@
+{
+  "Name": "MMO-Fish-Export-Service-Blanco",
+  "ProjectType": "Process",
+  "Description": "Emergency process for MMO Fish Export Service business continuety.",
+  "MainFile": "Main.xaml"
+}
