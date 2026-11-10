@@ -309,6 +309,7 @@
       "Path": "Framework/InitAllApplications.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "g_SpeciesRegex&Sequence_9",
         "g_arrCaseID&0d0e62de-98c2-4055-b3f9-4dd21f83d06a",
         "g_Config&0d0e62de-98c2-4055-b3f9-4dd21f83d06a",
         "g_swProcessingTimer&0d0e62de-98c2-4055-b3f9-4dd21f83d06a",

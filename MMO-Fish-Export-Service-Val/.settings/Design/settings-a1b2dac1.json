@@ -34,5 +34,6 @@
   "UiPath.UIAutomationNext.Activities.SearchStepsWeb.FindSelectorType": "Auto",
   "UiPath.UIAutomationNext.Activities.SearchStepsSAP.FindSelectorType": "One",
   "UiPath.UIAutomationNext.Activities.SearchStepsJava.FindSelectorType": "Auto",
-  "UiPath.UIAutomationNext.Activities.ApplicationCard.WindowAttachMode": "ByInstance"
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.WindowAttachMode": "ByInstance",
+  "UiPath.UIAutomationNext.Activities.Generic.UseClassicExperience": "False"
 }
