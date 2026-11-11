@@ -27134,7 +27134,11 @@
       "projectName": "MMO-Fish-Export-Service-Blanco",
       "projectPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local",
       "packagesPath": "C:\\Users\\kl000096\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local"
+      "outputPath": "C:\\Users\\kl000096\\OneDrive - Defra\\UiPath Working Folder\\MMO-Fish-Export-Service\\MMO-Fish-Export-Service-Blanco\\.local",
+      "UsingMicrosoftNETSdk": false,
+      "restoreAuditProperties": {
+        "enableAudit": "False"
+      }
     },
     "frameworks": {
       "net8.0-windows7.0": {
